@@ -266,7 +266,9 @@ export function Header() {
   return (
     <HeaderComp>
       <div className="logo-form-container">
-        <Logo pic={nicosLogo} />
+        <a href="/">
+          <Logo pic={nicosLogo} />
+        </a>
         <form className="form" onSubmit={HandleSubmit}>
           <input
             className="input"
@@ -295,16 +297,28 @@ export function Header() {
       </label>
       <ul className="header__menu-lista">
         <li>
-          <div className="header__option">Inicio</div>
-          <div className="header__option">Quienes somos</div>
-          <div className="header__option">Productos</div>
-          <div className="header__option">Contacto</div>
+          <a className="header__option">Inicio</a>
+          <a className="header__option" href="/about-us">
+            Quienes somos
+          </a>
+          <a className="header__option" href="/products">
+            Productos
+          </a>
+          <a className="header__option" href="/contact">
+            Contacto
+          </a>
         </li>
       </ul>
       <nav className="nav">
-        <div className="option">Quienes somos</div>
-        <div className="option">Productos</div>
-        <div className="option">Contacto</div>
+        <a className="option" href="/about-us">
+          Quienes somos
+        </a>
+        <a className="option" href="/products">
+          Productos
+        </a>
+        <a className="option" href="/contact">
+          Contacto
+        </a>
       </nav>
     </HeaderComp>
   );
