@@ -18,10 +18,18 @@ const Main: NextPage = () => {
         </section>
         <section className={styles["section__cat-des"]}>
           <h2 className={styles["h2__cat-des"]}>Categorías destacadas</h2>
-          <CategoryComp name={"Guitarras acusticas"} pic={classicGuitars} />
-          <CategoryComp name={"Microfonos"} pic={microphones} />
-          <CategoryComp name={"Amplificadores"} pic={amps} />
-          <CategoryComp name={"Teclados"} pic={keyboards} />
+          <a href="/category/guitarras-acusticas">
+            <CategoryComp name={"Guitarras acusticas"} pic={classicGuitars} />
+          </a>
+          <a href="/category/microfonos">
+            <CategoryComp name={"Microfonos"} pic={microphones} />
+          </a>
+          <a href="/category/amplificadores">
+            <CategoryComp name={"Amplificadores"} pic={amps} />
+          </a>
+          <a href="/category/teclados">
+            <CategoryComp name={"Teclados"} pic={keyboards} />
+          </a>
         </section>
         <section className={styles["section__brands"]}>
           <h2 className={styles["h2__brands"]}>¿Qué marcas trabajamos?</h2>

@@ -103,7 +103,7 @@ export function Card(props) {
 
   function HandleClick(e) {
     e.preventDefault();
-    const attribute = e.target.getAttribute("productName");
+    const attribute = e.target.getAttribute("name");
     const attModified = attribute.toLowerCase().replaceAll(" ", "-");
 
     router.push("/product/" + attModified);
@@ -111,17 +111,17 @@ export function Card(props) {
 
   return (
     <CardComp>
-      <h3 className="card-title">{props.title}</h3>
+      <h3 className="card-title">{props.name}</h3>
       <img
         src={props.pic}
-        alt={props.title.toLowerCase().replaceAll(" ", "-")}
+        alt={props.name.toLowerCase().replaceAll(" ", "-")}
         className="card-img"
       />
       <div className="card-price-link">
         <h4 className="card-price">${props.price}</h4>
         <button
           className="card-see-more"
-          productName={props.title}
+          name={props.name}
           onClick={HandleClick}
         >
           Ver mas...

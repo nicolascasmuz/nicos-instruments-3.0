@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
-import styles from "./category.module.css";
+import styles from "./query.module.css";
 import { useParams } from "next/navigation";
 import { Card } from "../../components/card";
 import { searchProducts } from "lib";
 import Layout from "components/layout";
 
-export default function CategoryPage() {
-  const params: any = useParams();
-  const paramsReplaced = params?.category.replace("-", " ") || "";
+export default function ResultsPage() {
+  const params = useParams();
 
-  const [products, setProducts] = useState([]);
+  const [results, setResults] = useState([]);
   const [order, setOrder] = useState("menor precio");
 
-  async function pullResults(c, order) {
-    const res = await searchProducts(c);
+  async function pullResults(q, order) {
+    const res = await searchProducts(q);
+
     const items = res.results;
+    const lowerCaseQuery = q.toLowerCase();
 
     if (order === "menor precio") {
       const searchProduct = items.filter((p) => {
-        const filteredProducts = p.category === c;
+        const productTitle = p.name.toLowerCase();
+        const filteredProducts = productTitle.includes(lowerCaseQuery);
+
         return filteredProducts;
       });
 
@@ -32,10 +35,12 @@ export default function CategoryPage() {
         return 0;
       });
 
-      setProducts(lowerPrice);
+      setResults(lowerPrice);
     } else if (order === "mayor precio") {
       const searchProduct = items.filter((p) => {
-        const filteredProducts = p.category === c;
+        const productTitle = p.name.toLowerCase();
+        const filteredProducts = productTitle.includes(lowerCaseQuery);
+
         return filteredProducts;
       });
 
@@ -49,7 +54,7 @@ export default function CategoryPage() {
         return 0;
       });
 
-      setProducts(higherPrice);
+      setResults(higherPrice);
     }
   }
 
@@ -58,8 +63,8 @@ export default function CategoryPage() {
   }
 
   useEffect(() => {
-    if (params?.category) {
-      pullResults(params.category, order);
+    if (params?.query) {
+      pullResults(params.query, order);
     }
   }, [params, order]);
 
@@ -67,10 +72,12 @@ export default function CategoryPage() {
     <Layout>
       <section className={styles["general-comp"]}>
         <div className={styles["general-section__wrapper"]}>
-          <div className={styles["category__top-container"]}>
-            <h2 className={styles["category__h2"]}>{paramsReplaced}</h2>
+          <div className={styles["results__top-container"]}>
+            <h2 className={styles["results__h2"]}>
+              Resultados: {results.length}
+            </h2>
             <select
-              className={styles["category__select"]}
+              className={styles["results__select"]}
               name="order"
               value={order}
               onChange={handleChange}
@@ -80,9 +87,13 @@ export default function CategoryPage() {
             </select>
           </div>
           <div className={styles["card-wrapper"]}>
-            {products.map((r, index) => (
-              <Card key={index} name={r.name} price={r.price} pic={r.pic} />
-            ))}
+            {results.length === 0 ? (
+              <h2 className={styles["h2__loading"]}>Cargando...</h2>
+            ) : (
+              results.map((r, index) => (
+                <Card key={index} name={r.name} price={r.price} pic={r.pic} />
+              ))
+            )}
           </div>
         </div>
       </section>

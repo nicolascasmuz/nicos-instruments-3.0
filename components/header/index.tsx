@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { Logo } from "../logo";
 import nicosLogo from "../../resources/logo-shop@2000x.png";
 import searchLoupe from "../../resources/loupe.png";
 import burgerMenu from "../../resources/menu.png";
 
 export function Header() {
+  const router = useRouter();
+
   const HeaderComp = styled.header`
     display: flex;
     justify-content: space-between;
@@ -259,9 +262,15 @@ export function Header() {
     }
   `;
 
-  function HandleSubmit(e) {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
-  }
+
+    const queryValue = e.target.query.value;
+
+    if (queryValue) {
+      router.push("/results/" + queryValue);
+    }
+  };
 
   return (
     <HeaderComp>

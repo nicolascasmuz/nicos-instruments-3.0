@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Details } from "../../components/details";
+import { searchProducts } from "lib";
 import Layout from "components/layout";
 
 export default function ProductPage() {
@@ -51,27 +52,20 @@ export default function ProductPage() {
   const params = useParams();
   const [products, setProducts] = useState([]);
 
-  async function pullResults(product) {
-    fetch(
-      "https://preview.contentful.com/spaces/boc2rp8m0dgi/environments/master/entries?access_token=Y1_N0gShtcshwQbkaOPc2u0lA-7zD8351Q0NWQCRCsU&&content_type=nicosStock"
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        const nameHyphenSpace = product.replaceAll("-", " ");
-        const items = data.items;
+  async function pullResults(p) {
+    const res = await searchProducts(p);
 
-        const searchProduct = items.filter((p) => {
-          const productTitle = p.fields.title.toLowerCase();
-          const filteredProduct = productTitle.includes(nameHyphenSpace);
+    const nameHyphenSpace = p.replaceAll("-", " ");
+    const items = res.results;
 
-          return filteredProduct;
-        });
+    const searchProduct = items.filter((p) => {
+      const productTitle = p.name.toLowerCase();
+      const filteredProduct = productTitle.includes(nameHyphenSpace);
 
-        console.log("selectedProduct: ", searchProduct);
-        setProducts(searchProduct);
-      });
+      return filteredProduct;
+    });
+
+    setProducts(searchProduct);
   }
 
   useEffect(() => {
@@ -89,11 +83,11 @@ export default function ProductPage() {
             {products.map((r, index) => (
               <Details
                 key={index}
-                pic={r.fields.url}
-                title={r.fields.title}
-                description={r.fields.description}
-                price={r.fields.price}
-                cat={r.fields.cat}
+                pic={r.pic}
+                title={r.name}
+                description={r.description}
+                price={r.price}
+                cat={r.category}
               />
             ))}
           </div>
