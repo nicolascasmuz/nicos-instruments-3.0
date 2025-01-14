@@ -35,7 +35,6 @@ export function Header() {
     }
 
     .logo-comp {
-      margin-left: 30px;
       transition: all 0.25s;
     }
 
@@ -229,36 +228,60 @@ export function Header() {
 
     .nav {
       display: none;
-      margin-right: 30px;
     }
 
     @media (min-width: 769px) {
       .nav {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 1fr 90px;
+        gap: 0 15px;
         font-size: 20px;
+        align-items: center;
       }
     }
 
     @media (min-width: 1069px) {
       .nav {
+        display: flex;
         flex-direction: row;
-        gap: 5px;
+        align-items: center;
+        gap: 25px;
       }
     }
 
     .option {
+      grid-column: 1;
       font-family: "Bebas Neue", cursive;
       text-align: right;
       color: #080808;
       text-decoration: none;
-      width: 106px;
       transition: all 0.25s;
     }
 
     .option:hover {
       opacity: 50%;
+    }
+
+    .header__login {
+      color: #ac1a22;
+      font-family: "Bungee", cursive;
+      width: 90px;
+      text-align: center;
+      line-height: 22px;
+      align-self: center;
+      transition: all 0.25s;
+    }
+
+    .header__login:hover {
+      opacity: 50%;
+    }
+
+    @media (min-width: 769px) {
+      .header__login {
+        grid-row: 2;
+        grid-column: 2;
+      }
     }
   `;
 
@@ -327,6 +350,10 @@ export function Header() {
         </a>
         <a className="option" href="/contact">
           Contacto
+        </a>
+
+        <a className="header__login" href="/login">
+          Iniciar Sesión
         </a>
       </nav>
     </HeaderComp>

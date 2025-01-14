@@ -1,0 +1,83 @@
+.email-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 400px;
+}
+
+.login-input {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #fafafa;
+  background-color: #141414;
+  border: none;
+  width: 266px;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .login-input {
+    width: 356px;
+  }
+}
+
+.login-button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #f0efda;
+  text-align: center;
+  border: none;
+  background-color: #ac1a22;
+  width: 266px;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .login-button {
+    width: 356px;
+  }
+}
+
+.code-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 400px;
+}
+
+.code-input {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #fafafa;
+  background-color: #141414;
+  border: none;
+  width: 266px;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .code-input {
+    width: 356px;
+  }
+}
+
+.code-button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #f0efda;
+  text-align: center;
+  border: none;
+  background-color: #ac1a22;
+  width: 266px;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .code-button {
+    width: 356px;
+  }
+}

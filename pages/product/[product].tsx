@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Details } from "../../components/details";
-import { searchProducts } from "lib";
+import { searchProducts } from "lib/api";
 import Layout from "components/layout";
 
 export default function ProductPage() {

@@ -15,6 +15,31 @@ export async function fetchAPI(input?: RequestInfo, options?) {
   }
 }
 
+export async function sendCode(email: string) {
+  if (email) {
+    fetchAPI("/auth", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+  }
+}
+
+export async function saveToken(email: string, code: number) {
+  if (email && code) {
+    const token = await fetchAPI("/auth/token", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ email, code }),
+    });
+    localStorage.setItem("saved-state", JSON.stringify(token));
+  }
+}
+
 export async function searchProducts(product: string) {
   if (product) {
     const foundProduct = await fetchAPI(

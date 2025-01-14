@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./category.module.css";
 import { useParams } from "next/navigation";
-import { Card } from "../../components/card";
-import { searchProducts } from "lib";
+import { Card } from "components/card";
 import Layout from "components/layout";
+import { searchProducts } from "lib/api";
 
 export default function CategoryPage() {
   const params: any = useParams();

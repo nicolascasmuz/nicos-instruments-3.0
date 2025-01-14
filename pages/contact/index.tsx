@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./contact.module.css";
 import Layout from "components/layout";
 
