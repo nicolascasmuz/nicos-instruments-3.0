@@ -154,15 +154,19 @@ export function Details(props) {
   return (
     <DetailsComp>
       <img
-        src={props.pic}
-        alt={props.title.toLowerCase().replaceAll(" ", "-")}
+        src={props?.pic}
+        alt={
+          props?.title
+            ? props?.title.toLowerCase().replaceAll(" ", "-")
+            : "card-img"
+        }
         className="card-img"
       />
       <div className="details__details-container">
-        <h3 className="card-title">{props.title}</h3>
-        <p className="details__description">{props.description}</p>
-        <h4 className="card-price">${props.price}</h4>
-        <p className="details__category">Categoria: {props.cat}</p>
+        <h3 className="card-title">{props?.title}</h3>
+        <p className="details__description">{props?.description}</p>
+        <h4 className="card-price">${props?.price}</h4>
+        <p className="details__category">Categoria: {props?.cat}</p>
         <div className="details__button-container">
           <button className="details__buy">Comprar</button>
           <div className="details__logo-container">

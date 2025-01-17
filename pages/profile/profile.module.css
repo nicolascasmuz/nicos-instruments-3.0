@@ -1,0 +1,68 @@
+.general-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #362b2f;
+  min-height: calc(100vh - 260px);
+  overflow: auto;
+  padding: 40px 0;
+}
+
+.main-title {
+  font-family: Poppins Semi Bold;
+  font-size: 35px;
+  color: #141414;
+  text-align: center;
+  line-height: 40px;
+  margin: 40px 15px 15px 15px;
+}
+
+.modify-data-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.h2__art-des {
+  font-family: "Bungee Shade", cursive;
+  font-size: 25px;
+  color: #f0efda;
+  line-height: 1.25;
+  text-align: center;
+  margin: 0;
+}
+
+.login-input {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #fafafa;
+  background-color: #141414;
+  border: none;
+  width: 266px;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .login-input {
+    width: 356px;
+  }
+}
+
+.login-button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #f0efda;
+  text-align: center;
+  border: none;
+  background-color: #ac1a22;
+  width: 266px;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .login-button {
+    width: 356px;
+  }
+}

@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Logo } from "../logo";
-import nicosLogo from "../../resources/logo-shop@2000x.png";
-import searchLoupe from "../../resources/loupe.png";
-import burgerMenu from "../../resources/menu.png";
+import { useMe } from "lib/hooks";
+import nicosLogo from "resources/logo-shop@2000x.png";
+import searchLoupe from "resources/loupe.png";
+import burgerMenu from "resources/menu.png";
+import profilePic from "resources/users.png";
 
 export function Header() {
   const router = useRouter();
+  const [loginDisplay, setLoginDisplay] = useState("none");
+  const [profilePicDisplay, setProfilePicDisplay] = useState("none");
+  const data: any = useMe();
+
+  useEffect(() => {
+    if (data) {
+      setLoginDisplay("none");
+      setProfilePicDisplay("block");
+    } else {
+      setLoginDisplay("block");
+      setProfilePicDisplay("none");
+    }
+  }, [data]);
 
   const HeaderComp = styled.header`
     display: flex;
@@ -264,6 +279,7 @@ export function Header() {
     }
 
     .header__login {
+      display: ${loginDisplay};
       color: #ac1a22;
       font-family: "Bungee", cursive;
       width: 90px;
@@ -279,6 +295,23 @@ export function Header() {
 
     @media (min-width: 769px) {
       .header__login {
+        grid-row: 2;
+        grid-column: 2;
+      }
+    }
+
+    .header__profile-pic {
+      display: ${profilePicDisplay};
+      align-self: center;
+      transition: all 0.25s;
+    }
+
+    .header__profile-pic:hover {
+      opacity: 50%;
+    }
+
+    @media (min-width: 769px) {
+      .header__profile-pic {
         grid-row: 2;
         grid-column: 2;
       }
@@ -351,9 +384,11 @@ export function Header() {
         <a className="option" href="/contact">
           Contacto
         </a>
-
         <a className="header__login" href="/login">
           Iniciar Sesión
+        </a>
+        <a className="header__profile-pic" href="/profile">
+          <Image src={profilePic} alt="profile-pic" height={50} width={50} />
         </a>
       </nav>
     </HeaderComp>

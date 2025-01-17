@@ -4,11 +4,35 @@ export async function fetchAPI(input?: RequestInfo, options?) {
   const url = BASE_URL + input;
   let res;
 
-  const response = await fetch(url, options);
-  res = response;
+  /* const response = await fetch(url, options);
+  res = response; */
+
+  if (input == "/me" && options?.method == "PATCH") {
+    const response = await fetch(url, options);
+    res = response;
+  }
+  if (input == "/me/address" && options?.method == "PATCH") {
+    const response = await fetch(url, options);
+    res = response;
+  }
+  if (input == "/me") {
+    const state = localStorage.getItem("saved-state");
+    const parsedState = JSON.parse(state);
+
+    const response = await fetch(url, {
+      headers: {
+        authorization: `bearer ${parsedState.token}`,
+      },
+    });
+    res = response;
+  } else {
+    const response = await fetch(url, options);
+    res = response;
+  }
 
   if (res.status >= 200 && res.status < 300) {
     const data = await res.json();
+    console.log("data: ", data);
     return data;
   } else {
     throw new Error(`Hubo un error ${res.status}: ${res.statusText}`);
@@ -51,5 +75,31 @@ export async function searchProducts(product: string) {
       }
     );
     return foundProduct;
+  }
+}
+
+export async function editData(newData) {
+  if (newData) {
+    console.log("api: ", newData);
+    fetchAPI("/me", {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    });
+  }
+}
+
+export async function editAddress(newData) {
+  if (newData) {
+    console.log("api address: ", newData);
+    fetchAPI("/me/address", {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    });
   }
 }
