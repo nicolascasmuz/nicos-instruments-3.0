@@ -8,6 +8,7 @@ import nicosLogo from "resources/logo-shop@2000x.png";
 import searchLoupe from "resources/loupe.png";
 import burgerMenu from "resources/menu.png";
 import profilePic from "resources/users.png";
+import { StraightButton } from "ui/buttons";
 
 export function Header() {
   const router = useRouter();
@@ -341,7 +342,9 @@ export function Header() {
             name="query"
             placeholder="Teclado Yamaha..."
           />
-          <button className="button">Buscar</button>
+          <StraightButton color="#362b2f" width="100px">
+            Buscar
+          </StraightButton>
         </form>
       </div>
       <input className="input-check" type="checkbox" id="check-loupe" />

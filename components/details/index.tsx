@@ -4,6 +4,7 @@ import styled from "styled-components";
 import logoVisa from "../../resources/logo-visa.png";
 import logoMaster from "../../resources/logo-master.png";
 import logoAmerican from "../../resources/logo-american.png";
+import { RoundedButton } from "ui/buttons";
 
 const DetailsComp = styled.div`
   display: grid;
@@ -168,7 +169,7 @@ export function Details(props) {
         <h4 className="card-price">${props?.price}</h4>
         <p className="details__category">Categoria: {props?.cat}</p>
         <div className="details__button-container">
-          <button className="details__buy">Comprar</button>
+          <RoundedButton width="130px">Comprar</RoundedButton>
           <div className="details__logo-container">
             <Image className="logo visa" src={logoVisa} alt="logo-visa"></Image>
             <Image

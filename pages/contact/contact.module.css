@@ -98,14 +98,13 @@
 }
 
 .section-form__button {
-  border: none;
-  background-color: #f0efda;
-  color: #362b2f;
   font-family: "Bebas Neue", cursive;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 30px;
+  color: #f0efda;
+  text-align: center;
+  border: none;
+  background-color: #ac1a22;
   height: 45px;
-  margin-top: 20px;
   transition: all 0.25s;
 }
 

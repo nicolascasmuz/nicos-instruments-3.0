@@ -49,12 +49,12 @@
 }
 
 .category__select {
-  font-family: "Bebas Neue", cursive;
-  font-size: 18px;
-  color: #080808;
-  width: 120px;
-  height: 30px;
-  background-color: #f0efda;
+  align-self: center;
+  background-color: #141414;
   border: none;
-  border-radius: 5px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 25px;
+  color: #fafafa;
+  width: 50%;
+  height: 45px;
 }

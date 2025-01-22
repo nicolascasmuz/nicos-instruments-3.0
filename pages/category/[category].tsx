@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { Card } from "components/card";
 import Layout from "components/layout";
 import { searchProducts } from "lib/api";
+import { Select } from "ui/select";
 
 export default function CategoryPage() {
   const params: any = useParams();
@@ -69,15 +70,15 @@ export default function CategoryPage() {
         <div className={styles["general-section__wrapper"]}>
           <div className={styles["category__top-container"]}>
             <h2 className={styles["category__h2"]}>{paramsReplaced}</h2>
-            <select
-              className={styles["category__select"]}
+            <Select
               name="order"
               value={order}
               onChange={handleChange}
+              width="150px"
             >
-              <option value="menor precio">Menor precio</option>
-              <option value="mayor precio">Mayor precio</option>
-            </select>
+              <option value="menor precio">menor precio</option>
+              <option value="mayor precio">mayor precio</option>
+            </Select>
           </div>
           <div className={styles["card-wrapper"]}>
             {products.map((r, index) => (
