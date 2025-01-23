@@ -11,12 +11,14 @@
 .general-section__wrapper {
   display: grid;
   align-items: flex-start;
+  gap: 25px 0;
 }
 
 @media (min-width: 769px) {
   .general-section__wrapper {
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
+    gap: 0 25px;
   }
 }
 

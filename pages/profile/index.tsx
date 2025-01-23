@@ -4,6 +4,8 @@ import { editData, editAddress } from "lib/api";
 import Layout from "components/layout";
 import styles from "./profile.module.css";
 import { Select } from "ui/select";
+import { StraightButton } from "ui/buttons";
+import { PrimaryTitle } from "ui/texts";
 
 export default function Profile() {
   const data: any = useMe();
@@ -86,7 +88,7 @@ export default function Profile() {
     <Layout>
       <section className={styles["general-comp"]}>
         <div className={styles["general-section__wrapper"]}>
-          <h1 className={styles["h2__art-des"]}>Modificar datos</h1>
+          <PrimaryTitle size="50px">Mi perfil</PrimaryTitle>
           <Select name="me" value={me} onChange={handleChange} width="50%">
             <option value="data">Datos</option>
             <option value="address">Dirección</option>
@@ -167,9 +169,9 @@ export default function Profile() {
                 onChange={(e) => setNumber(e.target.value)}
               />
             </label>
-            <button className={styles["login-button"]} color="#ff7f87">
+            <StraightButton color="#ac1a22" width={"100%"}>
               Editar
-            </button>
+            </StraightButton>
           </form>
         </div>
       </section>

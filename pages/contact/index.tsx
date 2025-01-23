@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./contact.module.css";
 import Layout from "components/layout";
+import { StraightButton } from "ui/buttons";
+import { PrimaryTitle } from "ui/texts";
 
 export default function ContactPage() {
   const [form, setForm] = useState({});
@@ -25,7 +27,7 @@ export default function ContactPage() {
     <Layout>
       <section className={styles["general-comp"]}>
         <div className={styles["general-section__wrapper"]}>
-          <h2 className={styles["section-form__title"]}>Contacto</h2>
+          <PrimaryTitle size="50px">Contacto</PrimaryTitle>
           <form
             className={styles["section-form__form"]}
             onSubmit={handleSubmit}
@@ -67,7 +69,9 @@ export default function ContactPage() {
                 Por favor, complete todos los campos
               </h3>
             </label>
-            <button className={styles["section-form__button"]}>Enviar</button>
+            <StraightButton color="#ac1a22" width={"100%"}>
+              Enviar
+            </StraightButton>
           </form>
         </div>
       </section>

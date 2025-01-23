@@ -4,6 +4,8 @@ import { useParams } from "next/navigation";
 import { Card } from "components/card";
 import Layout from "components/layout";
 import { searchProducts } from "lib/api";
+import { Select } from "ui/select";
+import { PrimaryTitle } from "ui/texts";
 
 export default function ResultsPage() {
   const params = useParams();
@@ -73,18 +75,18 @@ export default function ResultsPage() {
       <section className={styles["general-comp"]}>
         <div className={styles["general-section__wrapper"]}>
           <div className={styles["results__top-container"]}>
-            <h2 className={styles["results__h2"]}>
+            <PrimaryTitle size="25px">
               Resultados: {results.length}
-            </h2>
-            <select
-              className={styles["results__select"]}
+            </PrimaryTitle>
+            <Select
               name="order"
               value={order}
               onChange={handleChange}
+              width="150px"
             >
-              <option value="menor precio">Menor precio</option>
-              <option value="mayor precio">Mayor precio</option>
-            </select>
+              <option value="menor precio">menor precio</option>
+              <option value="mayor precio">mayor precio</option>
+            </Select>
           </div>
           <div className={styles["card-wrapper"]}>
             {results.length === 0 ? (

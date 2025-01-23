@@ -5,6 +5,7 @@ import { Card } from "components/card";
 import Layout from "components/layout";
 import { searchProducts } from "lib/api";
 import { Select } from "ui/select";
+import { PrimaryTitle } from "ui/texts";
 
 export default function CategoryPage() {
   const params: any = useParams();
@@ -69,7 +70,7 @@ export default function CategoryPage() {
       <section className={styles["general-comp"]}>
         <div className={styles["general-section__wrapper"]}>
           <div className={styles["category__top-container"]}>
-            <h2 className={styles["category__h2"]}>{paramsReplaced}</h2>
+            <PrimaryTitle size="25px">{paramsReplaced}</PrimaryTitle>
             <Select
               name="order"
               value={order}

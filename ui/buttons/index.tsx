@@ -19,7 +19,7 @@ export const RoundedButton = styled.button`
   text-align: center;
   border: none;
   border-radius: 5px;
-  background-color: #ac1a22;
+  background-color: ${(props) => props.color};
   width: ${(props) => props.width};
   height: 35px;
   transition: all 0.25s;

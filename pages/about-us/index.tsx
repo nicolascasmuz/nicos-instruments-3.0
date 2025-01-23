@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./about-us.module.css";
 import musicShopOutside from "../../resources/music-shop-outside.jpg";
 import Layout from "components/layout";
+import { PrimaryTitle } from "ui/texts";
 
 export default function AboutUsPage() {
   const BodySection = styled.section`
@@ -108,8 +109,8 @@ export default function AboutUsPage() {
   return (
     <Layout>
       <section className={styles["general-comp"]}>
+        <PrimaryTitle>Quienes somos</PrimaryTitle>
         <div className={styles["general-section__wrapper"]}>
-          <h2 className={styles["about-us__title"]}>Quienes somos</h2>
           <div className={styles["about-us__pic"]}>
             <Image
               className={styles["about-us__shop"]}

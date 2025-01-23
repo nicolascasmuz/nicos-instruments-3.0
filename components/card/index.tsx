@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { RoundedButton } from "ui/buttons";
+import { SecondaryTitle } from "ui/texts";
 
 const CardComp = styled.div`
   display: grid;
@@ -112,7 +113,7 @@ export function Card(props) {
 
   return (
     <CardComp>
-      <h3 className="card-title">{props.name}</h3>
+      <SecondaryTitle size="18px">{props.name}</SecondaryTitle>
       <img
         src={props.pic}
         alt={props.name.toLowerCase().replaceAll(" ", "-")}
@@ -120,7 +121,12 @@ export function Card(props) {
       />
       <div className="card-price-link">
         <h4 className="card-price">${props.price}</h4>
-        <RoundedButton name={props.name} onClick={HandleClick} width="75px">
+        <RoundedButton
+          name={props.name}
+          onClick={HandleClick}
+          color="#ac1a22"
+          width="75px"
+        >
           Ver mas...
         </RoundedButton>
       </div>
