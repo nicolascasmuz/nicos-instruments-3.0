@@ -1,47 +1,32 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { RoundedButton } from "ui/buttons";
-import { SecondaryTitle } from "ui/texts";
+import { PriceText, SecondaryTitle } from "ui/texts";
 
 const CardComp = styled.div`
   display: grid;
+  grid-template-rows: 100%;
   grid-template-columns: 50% 50%;
-  grid-template-rows: auto auto;
   gap: 0px;
   background-color: #f0efda;
   border: solid 3px #ac1a22;
   border-radius: 10px;
   width: 320px;
   height: 200px;
-  padding-top: 10px;
   overflow: hidden;
 
   @media (min-width: 769px) {
+    grid-template-rows: auto auto;
+    grid-template-columns: 100%;
     gap: 12px;
-    grid-template-columns: none;
-    grid-template-rows: none;
     width: 250px;
     height: auto;
-    padding: 10px 0px;
-  }
-
-  .card-title {
-    grid-column: 1 / span 2;
-    line-height: 20px;
-    color: #ac1a22;
-    font-family: "Bungee", cursive;
-    margin: 0px 10px 10px 10px;
-    text-align: left;
-  }
-
-  @media (min-width: 769px) {
-    .card-title {
-      grid-column: auto;
-      margin: 0px 10px 0 10px;
-    }
+    padding-bottom: 10px;
   }
 
   .card-img {
+    grid-row: 1 / span 2;
+    grid-column: 1;
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -50,53 +35,34 @@ const CardComp = styled.div`
   .card-price-link {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    align-content: center;
-    justify-content: center;
-    gap: 25px;
+    height: 100%;
   }
 
   @media (min-width: 769px) {
     .card-price-link {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: initial;
-      gap: 0px;
-      padding: 0 15px;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: auto auto;
+      justify-items: center;
+      gap: 10px;
     }
   }
 
-  .card-price {
-    display: inline;
-    font-family: "Bebas Neue", cursive;
-    font-size: 25px;
-    color: #080808;
-    margin: 0;
-    text-align: left;
+  .card__title {
+    grid-row: 1;
+    grid-column: 1 / span 2;
   }
 
-  .card-see-more {
-    font-family: "Bebas Neue", cursive;
-    font-size: 15px;
-    color: #f0efda;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    background-color: #ac1a22;
-    width: 75px;
-    height: 35px;
-    margin: 0px 10px;
-    transition: all 0.25s;
+  .card__price {
+    grid-row: 2;
+    grid-column: 1;
   }
 
-  .card-see-more:hover {
-    opacity: 85%;
-  }
-
-  @media (min-width: 769px) {
-    .card-see-more {
-      text-align: center;
-    }
+  .card__button {
+    grid-row: 2;
+    grid-column: 2;
   }
 `;
 
@@ -113,15 +79,20 @@ export function Card(props) {
 
   return (
     <CardComp>
-      <SecondaryTitle size="18px">{props.name}</SecondaryTitle>
       <img
         src={props.pic}
         alt={props.name.toLowerCase().replaceAll(" ", "-")}
         className="card-img"
       />
       <div className="card-price-link">
-        <h4 className="card-price">${props.price}</h4>
+        <SecondaryTitle className="card__title" size="18px">
+          {props.name}
+        </SecondaryTitle>
+        <PriceText className="card__price" color="#080808">
+          ${props.price}
+        </PriceText>
         <RoundedButton
+          className="card__button"
           name={props.name}
           onClick={HandleClick}
           color="#ac1a22"

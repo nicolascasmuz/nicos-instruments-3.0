@@ -11,7 +11,7 @@
 .general-section__wrapper {
   display: grid;
   align-items: flex-start;
-  gap: 65px;
+  gap: 25px;
 }
 
 @media (min-width: 769px) {

@@ -10,6 +10,10 @@ export const StraightButton = styled.button`
   width: ${(props) => props.width};
   height: 45px;
   transition: all 0.25s;
+
+  &:hover {
+    opacity: 85%;
+  }
 `;
 
 export const RoundedButton = styled.button`
@@ -23,4 +27,8 @@ export const RoundedButton = styled.button`
   width: ${(props) => props.width};
   height: 35px;
   transition: all 0.25s;
+
+  &:hover {
+    opacity: 85%;
+  }
 `;

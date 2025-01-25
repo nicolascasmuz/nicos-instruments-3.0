@@ -5,7 +5,7 @@ import logoVisa from "../../resources/logo-visa.png";
 import logoMaster from "../../resources/logo-master.png";
 import logoAmerican from "../../resources/logo-american.png";
 import { RoundedButton } from "ui/buttons";
-import { SecondaryTitle } from "ui/texts";
+import { Body, PriceText, SecondaryTitle, Subtitle } from "ui/texts";
 
 const DetailsComp = styled.div`
   display: grid;
@@ -78,32 +78,12 @@ const DetailsComp = styled.div`
     }
   }
 
-  .details__description {
-    align-self: start;
-    font-family: "Bebas Neue", cursive;
-    color: #f0efda;
-    margin: 0px 10px;
-  }
-
-  .card-price {
-    font-family: "Bebas Neue", cursive;
-    font-size: 25px;
-    color: #f0efda;
-    margin: 0px 10px;
-  }
-
-  .details__category {
-    font-family: "Bebas Neue", cursive;
-    font-size: 15px;
-    color: #f0efda;
-    margin: 0px 10px;
-  }
-
   .details__button-container {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
     justify-content: center;
+    justify-items: center;
     gap: 10px;
     width: 100%;
     margin-top: 15px;
@@ -166,9 +146,13 @@ export function Details(props) {
       />
       <div className="details__details-container">
         <SecondaryTitle size="35px">{props?.title}</SecondaryTitle>
-        <p className="details__description">{props?.description}</p>
-        <h4 className="card-price">${props?.price}</h4>
-        <p className="details__category">Categoria: {props?.cat}</p>
+        <Body className="details__description">{props?.description}</Body>
+        <PriceText className="card-price" color="#f0efda">
+          ${props?.price}
+        </PriceText>
+        <Subtitle className="details__category">
+          Categoria: {props?.cat}
+        </Subtitle>
         <div className="details__button-container">
           <RoundedButton color="#ac1a22" width="130px">
             Comprar

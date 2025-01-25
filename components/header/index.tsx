@@ -9,6 +9,7 @@ import searchLoupe from "resources/loupe.png";
 import burgerMenu from "resources/menu.png";
 import profilePic from "resources/users.png";
 import { StraightButton } from "ui/buttons";
+import { Input, InputResponsive } from "ui/input";
 
 export function Header() {
   const router = useRouter();
@@ -79,27 +80,6 @@ export function Header() {
       height: 0px;
       top: 90px;
       transition: all 0.5s;
-    }
-
-    .input-search {
-      position: fixed;
-      width: 100%;
-      height: 0px;
-      transition: all 0.5s;
-      padding: 0 0 0 10px;
-      background-color: #141414;
-      opacity: 95%;
-      border: none;
-      text-align: left;
-      font-size: 30px;
-      font-family: "Bebas Neue", cursive;
-      color: #fafafa;
-    }
-
-    @media (min-width: 769px) {
-      .input-search {
-        display: none;
-      }
     }
 
     #check-loupe {
@@ -250,7 +230,7 @@ export function Header() {
       .nav {
         display: grid;
         grid-template-rows: auto auto auto;
-        grid-template-columns: 1fr 90px;
+        grid-template-columns: 1fr 50px;
         gap: 0 15px;
         font-size: 20px;
         align-items: center;
@@ -336,7 +316,7 @@ export function Header() {
           <Logo pic={nicosLogo} />
         </a>
         <form className="form" onSubmit={HandleSubmit}>
-          <input
+          <Input
             className="input"
             type="text"
             name="query"
@@ -352,7 +332,7 @@ export function Header() {
         <Image className="loupe-img" src={searchLoupe} alt="search-loupe" />
       </label>
       <form className="form-rexponsive" onSubmit={HandleSubmit}>
-        <input
+        <InputResponsive
           className="input-search"
           type="text"
           name="query"

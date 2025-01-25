@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./about-us.module.css";
 import musicShopOutside from "../../resources/music-shop-outside.jpg";
 import Layout from "components/layout";
-import { PrimaryTitle } from "ui/texts";
+import { Body, PrimaryTitle, Subtitle } from "ui/texts";
 
 export default function AboutUsPage() {
   const BodySection = styled.section`
@@ -117,11 +117,11 @@ export default function AboutUsPage() {
               src={musicShopOutside}
               alt="music-shop-outside"
             />
-            <span className={styles["about-us__epigraph"]}>
+            <Subtitle className={styles["about-us__epigraph"]}>
               Sede central de Nico's Instruments en Lomas de Zamora
-            </span>
+            </Subtitle>
           </div>
-          <p className={styles["about-us__text"]}>
+          <Body className={styles["about-us__text"]}>
             Nico's Instruments nació en 1995 en el partido de Lomas de Zamora,
             fundado por el músico y empresario de origen irlandés Nicholas
             O'Brien quien junto a sus dos hijos gemelos Martín y Joaquín, ambos
@@ -136,7 +136,7 @@ export default function AboutUsPage() {
             demás. Más adelante empezarían a abrir sucursales a lo largo y ancho
             de toda la zona sur del GBA, actualmente cuentan con seis,
             Avellaneda, Quilmes, Lanús, Berazategui, Adrogué y Lomas de Zamora.
-          </p>
+          </Body>
         </div>
       </section>
     </Layout>
