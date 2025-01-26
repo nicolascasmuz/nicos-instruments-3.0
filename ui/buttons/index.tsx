@@ -14,6 +14,10 @@ export const StraightButton = styled.button`
   &:hover {
     opacity: 85%;
   }
+
+  @media (min-width: 1069px) {
+    width: ${(props) => (props.secondWidth ? props.secondWidth : props.width)};
+  }
 `;
 
 export const RoundedButton = styled.button`

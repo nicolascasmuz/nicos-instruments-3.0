@@ -9,7 +9,7 @@ import searchLoupe from "resources/loupe.png";
 import burgerMenu from "resources/menu.png";
 import profilePic from "resources/users.png";
 import { StraightButton } from "ui/buttons";
-import { Input, InputResponsive } from "ui/input";
+import { Input, InputResponsive } from "ui/inputs";
 
 export function Header() {
   const router = useRouter();
@@ -87,6 +87,7 @@ export function Header() {
     }
 
     #check-loupe:checked ~ label .loupe-img {
+      width: 50px;
       height: 50px;
       padding: 10px;
       border-radius: 25%;
@@ -169,7 +170,7 @@ export function Header() {
       position: fixed;
       width: 100%;
       height: 0vh;
-      top: 74px;
+      top: 90px;
       background-color: #141414;
       opacity: 95%;
       text-align: center;
@@ -205,6 +206,7 @@ export function Header() {
     }
 
     #check:checked ~ .header__menu-label .img {
+      width: 50px;
       height: 50px;
       padding: 10px;
       border-radius: 25%;
@@ -220,6 +222,14 @@ export function Header() {
       font-family: "Bebas Neue", cursive;
       font-size: 30px;
       text-decoration: none;
+    }
+
+    .login {
+      display: ${loginDisplay};
+    }
+
+    .profile {
+      display: ${profilePicDisplay};
     }
 
     .nav {
@@ -345,7 +355,15 @@ export function Header() {
       </label>
       <ul className="header__menu-lista">
         <li>
-          <a className="header__option">Inicio</a>
+          <a className="header__option" href="/">
+            Inicio
+          </a>
+          <a className="header__option login" href="/login">
+            Iniciar sesión
+          </a>
+          <a className="header__option profile" href="/profile">
+            Mi perfil
+          </a>
           <a className="header__option" href="/about-us">
             Quienes somos
           </a>
@@ -368,7 +386,7 @@ export function Header() {
           Contacto
         </a>
         <a className="header__login" href="/login">
-          Iniciar Sesión
+          Iniciar sesión
         </a>
         <a className="header__profile-pic" href="/profile">
           <Image src={profilePic} alt="profile-pic" height={50} width={50} />

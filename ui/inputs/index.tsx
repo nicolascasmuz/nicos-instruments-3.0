@@ -33,3 +33,17 @@ export const InputResponsive = styled.input`
     display: none;
   }
 `;
+
+export const TextArea = styled.textarea`
+  background-color: #141414;
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 18px;
+  color: #fafafa;
+  width: 266px;
+  height: 160px;
+
+  @media (min-width: 1069px) {
+    width: 356px;
+  }
+`;

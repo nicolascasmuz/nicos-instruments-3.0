@@ -6,6 +6,7 @@ import styles from "./profile.module.css";
 import { Select } from "ui/select";
 import { StraightButton } from "ui/buttons";
 import { PrimaryTitle } from "ui/texts";
+import { Input } from "ui/inputs";
 
 export default function Profile() {
   const data: any = useMe();
@@ -34,13 +35,6 @@ export default function Profile() {
     setStreet(data?.address.street);
     setNumber(data?.address.number);
   }, [data]);
-
-  /* useEffect(() => {
-    setCity(addressData?.address.city);
-    setStreet(addressData?.address.street);
-    setNumber(addressData?.address.number);
-    console.log("addressData: ", addressData);
-  }, [addressData]); */
 
   function handleChange(e) {
     if (e.target.value == "data") {
@@ -100,8 +94,7 @@ export default function Profile() {
           >
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>NICKNAME</h3>
-              <input
-                className={styles["login-input"]}
+              <Input
                 type="email"
                 name="email"
                 value={email}
@@ -110,8 +103,7 @@ export default function Profile() {
             </label>
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>EDAD</h3>
-              <input
-                className={styles["login-input"]}
+              <Input
                 type="text"
                 name="nick"
                 value={nickname}
@@ -122,17 +114,16 @@ export default function Profile() {
               <h3 className={styles["section-form__h3"]}>
                 FECHA DE NACIMIENTO
               </h3>
-              <input
-                className={styles["login-input"]}
+              <Input
                 type="text"
                 name="age"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
               />
             </label>
-            <button className={styles["login-button"]} color="#ff7f87">
+            <StraightButton color="#ac1a22" width="266px" secondWidth="356px">
               Editar
-            </button>
+            </StraightButton>
           </form>
           <form
             style={{ display: display ? "grid" : "none" }}
@@ -141,8 +132,7 @@ export default function Profile() {
           >
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>CIUDAD</h3>
-              <input
-                className={styles["login-input"]}
+              <Input
                 type="text"
                 name="city"
                 value={city}
@@ -151,8 +141,7 @@ export default function Profile() {
             </label>
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>CALLE</h3>
-              <input
-                className={styles["login-input"]}
+              <Input
                 type="text"
                 name="street"
                 value={street}
@@ -161,15 +150,14 @@ export default function Profile() {
             </label>
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>NÚMERO</h3>
-              <input
-                className={styles["login-input"]}
+              <Input
                 type="text"
                 name="number"
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
               />
             </label>
-            <StraightButton color="#ac1a22" width={"100%"}>
+            <StraightButton color="#ac1a22" width="266px" secondWidth="356px">
               Editar
             </StraightButton>
           </form>

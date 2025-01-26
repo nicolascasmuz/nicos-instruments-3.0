@@ -3,6 +3,7 @@ import styles from "./contact.module.css";
 import Layout from "components/layout";
 import { StraightButton } from "ui/buttons";
 import { PrimaryTitle } from "ui/texts";
+import { Input, TextArea } from "ui/inputs";
 
 export default function ContactPage() {
   const [form, setForm] = useState({});
@@ -34,20 +35,18 @@ export default function ContactPage() {
           >
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>NOMBRE</h3>
-              <input
+              <Input
                 type="text"
-                className={styles["section-form__input-name"]}
                 id="nombre"
                 name="nombre"
                 value={form.nombre}
                 onChange={handleChange}
-              />
+              ></Input>
             </label>
             <label htmlFor="email" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>EMAIL</h3>
-              <input
+              <Input
                 type="email"
-                className={styles["section-form__input-email"]}
                 id="email"
                 name="email"
                 value={form.email}
@@ -56,20 +55,19 @@ export default function ContactPage() {
             </label>
             <label htmlFor="mensaje" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>MENSAJE</h3>
-              <textarea
-                className={styles["section-form__textarea"]}
+              <TextArea
                 id="mensaje"
                 cols="30"
                 rows="10"
                 name="mensaje"
                 value={form.mensaje}
                 onChange={handleChange}
-              ></textarea>
+              />
               <h3 className={styles["section-form__error"]}>
                 Por favor, complete todos los campos
               </h3>
             </label>
-            <StraightButton color="#ac1a22" width={"100%"}>
+            <StraightButton color="#ac1a22" width="266px" secondWidth="356px">
               Enviar
             </StraightButton>
           </form>
