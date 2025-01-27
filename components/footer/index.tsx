@@ -1,136 +1,39 @@
 import React from "react";
-import styled from "styled-components";
 import Image from "next/image";
 import { Logo } from "../logo";
-import logoFacebook from "../../resources/logo-facebook_1@4x.png";
-import logoInstagram from "../../resources/logo-instagram_1@4x.png";
-import logoWhatsapp from "../../resources/logo-whatsapp_1@4x.png";
-import logoYoutube from "../../resources/logo-youtube_1@4x.png";
-import nicosLogo from "../../resources/logo-shop@2000x.png";
-
-const FooterComp = styled.footer`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  background-color: #f0efda;
-  color: #362b2f;
-  font-family: "Bebas Neue", cursive;
-  height: auto;
-  padding: 30px 0px;
-
-  @media (min-width: 769px) {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 140px;
-    padding: 10px 30px;
-  }
-
-  .footer-logo-copyright {
-    display: grid;
-    justify-items: center;
-    gap: 7px;
-  }
-
-  .footer-logo {
-    height: 60px;
-  }
-
-  .footer-copyright {
-    margin: 0px;
-  }
-
-  .footer-socialmedia {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  @media (min-width: 769px) {
-    .footer-socialmedia {
-      display: flex;
-      gap: 10px;
-    }
-  }
-
-  .footer__links {
-    height: 35px;
-  }
-
-  .logo-facebook {
-    width: 35px;
-    height: 35px;
-  }
-  .logo-instagram {
-    width: 35px;
-    height: 35px;
-  }
-  .logo-whatsapp {
-    width: 35px;
-    height: 35px;
-  }
-  .logo-youtube {
-    width: 35px;
-    height: 35px;
-  }
-
-  .footer-datos {
-    text-align: center;
-    width: 220px;
-    margin: 0;
-  }
-
-  @media (min-width: 769px) {
-    .footer-datos {
-      text-align: right;
-    }
-  }
-`;
+import { WhatsappIcon } from "ui/icons";
+import { InstagramIcon } from "ui/icons";
+import { FacebookIcon } from "ui/icons";
+import { YoutubeIcon } from "ui/icons";
+import styles from "./footer.module.css";
 
 export function Footer() {
   return (
-    <FooterComp className="footer">
-      <div className="footer-logo-copyright">
-        <Logo pic={nicosLogo} />
-        <h6 className="footer-copyright">© 2023 Nico's Instruments</h6>
+    <div className={styles["footer"]}>
+      <div className={styles["footer-logo-copyright"]}>
+        <Logo />
+        <h6 className={styles["footer-copyright"]}>
+          © 2025 Nico's Instruments
+        </h6>
       </div>
-      <div className="footer-socialmedia">
-        <a href="" className="footer__links link-facebook">
-          <Image
-            src={logoFacebook}
-            alt="logo-facebook"
-            className="logo-facebook"
-          />
+      <div className={styles["footer-socialmedia"]}>
+        <a href="" className={styles["footer__links link-facebook"]}>
+          <FacebookIcon />
         </a>
-        <a href="" className="footer__links link-instagram">
-          <Image
-            src={logoInstagram}
-            alt="logo-instagram"
-            className="logo-instagram"
-          />
+        <a href="" className={styles["footer__links link-instagram"]}>
+          <InstagramIcon />
         </a>
-        <a href="" className="footer__links link-whatsapp">
-          <Image
-            src={logoWhatsapp}
-            alt="logo-whatsapp"
-            className="logo-whatsapp"
-          />
+        <a href="" className={styles["footer__links link-whatsapp"]}>
+          <WhatsappIcon />
         </a>
-        <a href="" className="footer__links link-youtube">
-          <Image
-            src={logoYoutube}
-            alt="logo-youtube"
-            className="logo-youtube"
-          />
+        <a href="" className={styles["footer__links link-youtube"]}>
+          <YoutubeIcon />
         </a>
       </div>
-      <p className="footer-datos">
+      <p className={styles["footer-datos"]}>
         (011) 4344-1298 contacto@nicosinstruments.com.ar Laprida 1234 Lomas de
         Zamora, Buenos Aires
       </p>
-    </FooterComp>
+    </div>
   );
 }
