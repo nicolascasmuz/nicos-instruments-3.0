@@ -13,8 +13,19 @@ export function useMe() {
   return data;
 }
 
-export function useMeAddress() {
+/* export function useMeAddress() {
   const { data, error } = useSWR("/me/address", fetchAPI);
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  return data;
+} */
+
+export function useProduct(productID: string) {
+  const { data, error } = useSWRImmutable(`/products/${productID}`, fetchAPI);
 
   if (error) {
     console.error(error);
@@ -24,8 +35,12 @@ export function useMeAddress() {
   return data;
 }
 
-export function useProduct(productID: string) {
-  const { data, error } = useSWRImmutable(`/products/${productID}`, fetchAPI);
+export function useOrder(productID: string) {
+  console.log("data hooks: ", `/order?productID=${productID}`);
+  const { data, error } = useSWRImmutable(
+    `/order?productID=${productID}`,
+    fetchAPI
+  );
 
   if (error) {
     console.error(error);

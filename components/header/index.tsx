@@ -66,7 +66,7 @@ export function Header() {
           alt="search-loupe"
         />
       </label>
-      <form className={styles["form-rexponsive"]} onSubmit={HandleSubmit}>
+      <form className={styles["form-responsive"]} onSubmit={HandleSubmit}>
         <InputResponsive
           className={styles["input-search"]}
           type="text"

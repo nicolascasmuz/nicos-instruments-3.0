@@ -4,8 +4,21 @@ import { Body, PriceText, SecondaryTitle, Subtitle } from "ui/texts";
 import { VisaIcon } from "ui/icons";
 import { MasterIcon } from "ui/icons";
 import { AmericanIcon } from "ui/icons";
+import { createOrder } from "lib/api";
+import { useRouter } from "next/navigation";
 
 export function Details(props) {
+  const router = useRouter();
+
+  const HandleClick = async (e) => {
+    e.preventDefault();
+
+    const data: any = await createOrder(props.id);
+    if (data.init_point) {
+      router.push(data.init_point);
+    }
+  };
+
   return (
     <div className={styles["details-container"]}>
       <img
@@ -29,7 +42,7 @@ export function Details(props) {
           Categoria: {props?.cat}
         </Subtitle>
         <div className={styles["details__button-container"]}>
-          <RoundedButton color="#ac1a22" width="130px">
+          <RoundedButton color="#ac1a22" width="130px" onClick={HandleClick}>
             Comprar
           </RoundedButton>
           <div className={styles["details__logo-container"]}>

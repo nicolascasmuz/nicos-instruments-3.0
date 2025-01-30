@@ -52,25 +52,16 @@ export default function ProductPage() {
   const params = useParams();
   const [products, setProducts] = useState([]);
 
-  async function pullResults(p) {
+  async function pullResult(p) {
     const res = await searchProducts(p);
+    const item = res.results;
 
-    const nameHyphenSpace = p.replaceAll("-", " ");
-    const items = res.results;
-
-    const searchProduct = items.filter((p) => {
-      const productTitle = p.name.toLowerCase();
-      const filteredProduct = productTitle.includes(nameHyphenSpace);
-
-      return filteredProduct;
-    });
-
-    setProducts(searchProduct);
+    setProducts(item);
   }
 
   useEffect(() => {
     if (params?.product) {
-      pullResults(params.product);
+      pullResult(params.product);
     }
   }, [params]);
 
@@ -83,6 +74,7 @@ export default function ProductPage() {
             {products.map((r, index) => (
               <Details
                 key={index}
+                id={r.objectID}
                 pic={r.pic}
                 title={r.name}
                 description={r.description}

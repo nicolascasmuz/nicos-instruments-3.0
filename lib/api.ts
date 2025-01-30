@@ -32,7 +32,7 @@ export async function fetchAPI(input?: RequestInfo, options?) {
 
   if (res.status >= 200 && res.status < 300) {
     const data = await res.json();
-    console.log("data: ", data);
+    console.log("data api: ", data);
     return data;
   } else {
     throw new Error(`Hubo un error ${res.status}: ${res.statusText}`);
@@ -101,5 +101,20 @@ export async function editAddress(newData) {
       },
       body: JSON.stringify(newData),
     });
+  }
+}
+
+export async function createOrder(productID: string) {
+  const state = localStorage.getItem("saved-state");
+  const parsedState = JSON.parse(state);
+  if (productID) {
+    const order = await fetchAPI(`/order?productID=${productID}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${parsedState.token}`,
+      },
+    });
+    return order;
   }
 }
