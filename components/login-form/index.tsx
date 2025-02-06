@@ -42,12 +42,7 @@ export default function LoginForm() {
       >
         <label htmlFor="email" className={styles["login-form__label"]}>
           <h3 className={styles["login-form__h3"]}>EMAIL</h3>
-          <Input
-            className={styles["login-input"]}
-            type="email"
-            name="email"
-            id="email"
-          />
+          <Input type="email" name="email" id="email" />
         </label>
         <button className={styles["login-button"]}>Siguiente</button>
       </form>
@@ -56,10 +51,16 @@ export default function LoginForm() {
         style={{ display: display ? "flex" : "none" }}
         onSubmit={HandleCodeSubmit}
       >
-        <input className={styles["code-input"]} type="text" name="code" />
+        <label htmlFor="code" className={styles["login-form__label"]}>
+          <h3 className={styles["login-form__h3"]}>CODIGO</h3>
+          <Input type="text" name="code" id="code" />
+        </label>
         <button className={styles["code-button"]}>Ingresar</button>
       </form>
-      <p className={styles["login-form__p"]}>
+      <p
+        className={styles["login-form__p"]}
+        style={{ display: display ? "none" : "flex" }}
+      >
         ¿Aún no estás registrado?{" "}
         <a href="/signup" className={styles["login-form__a"]}>
           Registrarse
