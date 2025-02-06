@@ -1,19 +1,20 @@
-.login-form {
+.signup-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
+  height: auto;
 }
 
-.login-form__h3 {
+.signup-form__h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 20px;
   color: #f0efda;
   margin: 0;
 }
 
-.login-input {
+.signup-input {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   color: #fafafa;
@@ -24,12 +25,12 @@
 }
 
 @media (min-width: 1069px) {
-  .login-input {
+  .signup-input {
     width: 356px;
   }
 }
 
-.login-button {
+.signup-button {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   color: #f0efda;
@@ -41,7 +42,7 @@
 }
 
 @media (min-width: 1069px) {
-  .login-button {
+  .signup-button {
     width: 356px;
   }
 }
@@ -88,14 +89,14 @@
   }
 }
 
-.login-form__p {
+.signup-form__p {
   font-family: "Bebas Neue", cursive;
   font-size: 20px;
   color: #f0efda;
   margin-top: 10px;
 }
 
-.login-form__a {
+.signup-form__a {
   color: #ac1a22;
   text-decoration: underline;
 }

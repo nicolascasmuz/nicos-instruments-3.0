@@ -51,23 +51,10 @@
 
 .footer__links {
   height: 35px;
+  transition: all 0.25s;
 }
-
-.logo-facebook {
-  width: 35px;
-  height: 35px;
-}
-.logo-instagram {
-  width: 35px;
-  height: 35px;
-}
-.logo-whatsapp {
-  width: 35px;
-  height: 35px;
-}
-.logo-youtube {
-  width: 35px;
-  height: 35px;
+.footer__links:hover {
+  opacity: 50%;
 }
 
 .footer-datos {

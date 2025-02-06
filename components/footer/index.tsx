@@ -17,16 +17,16 @@ export function Footer() {
         </h6>
       </div>
       <div className={styles["footer-socialmedia"]}>
-        <a href="" className={styles["footer__links link-facebook"]}>
+        <a href="" className={styles["footer__links"]}>
           <FacebookIcon />
         </a>
-        <a href="" className={styles["footer__links link-instagram"]}>
+        <a href="" className={styles["footer__links"]}>
           <InstagramIcon />
         </a>
-        <a href="" className={styles["footer__links link-whatsapp"]}>
+        <a href="" className={styles["footer__links"]}>
           <WhatsappIcon />
         </a>
-        <a href="" className={styles["footer__links link-youtube"]}>
+        <a href="" className={styles["footer__links"]}>
           <YoutubeIcon />
         </a>
       </div>

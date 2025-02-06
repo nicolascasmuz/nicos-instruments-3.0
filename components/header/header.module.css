@@ -25,14 +25,6 @@
   gap: 50px;
 }
 
-.logo-comp {
-  transition: all 0.25s;
-}
-
-.logo-comp:hover {
-  opacity: 85%;
-}
-
 .label {
   cursor: pointer;
 }
@@ -233,6 +225,17 @@
 
 .option:hover {
   opacity: 50%;
+}
+
+.header__login {
+  font-family: "Bungee", cursive;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  color: #ac1a22;
+  transition: all 0.25s;
+  width: 93px;
+  align-self: center;
 }
 
 .header__login:hover {

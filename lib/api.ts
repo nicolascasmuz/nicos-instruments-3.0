@@ -39,7 +39,19 @@ export async function fetchAPI(input?: RequestInfo, options?) {
   }
 }
 
-export async function sendCode(email: string) {
+export async function SignupSendCode(data: object) {
+  if (data) {
+    fetchAPI("/auth", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  }
+}
+
+export async function LoginSendCode(email: string) {
   if (email) {
     fetchAPI("/auth", {
       method: "POST",
@@ -80,7 +92,6 @@ export async function searchProducts(product: string) {
 
 export async function editData(newData) {
   if (newData) {
-    console.log("api: ", newData);
     fetchAPI("/me", {
       method: "PATCH",
       headers: {
@@ -93,7 +104,6 @@ export async function editData(newData) {
 
 export async function editAddress(newData) {
   if (newData) {
-    console.log("api address: ", newData);
     fetchAPI("/me/address", {
       method: "PATCH",
       headers: {

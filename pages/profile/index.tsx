@@ -3,7 +3,7 @@ import { useMe } from "lib/hooks";
 import { editData, editAddress } from "lib/api";
 import Layout from "components/layout";
 import styles from "./profile.module.css";
-import { Select } from "ui/select";
+import { Select, SelectResponsive } from "ui/select";
 import { StraightButton } from "ui/buttons";
 import { PrimaryTitle } from "ui/texts";
 import { Input } from "ui/inputs";
@@ -14,22 +14,18 @@ export default function Profile() {
   const [me, setMe] = useState("data");
   const [display, setDisplay] = useState(false);
 
-  const [email, setEmail] = useState(data?.email);
   const [nickname, setNickname] = useState(data?.userData.nickname);
-  const [age, setAge] = useState(data?.userData.age);
-  const [weight, setWeight] = useState(data?.userData.weight);
-  const [height, setHeight] = useState(data?.userData.height);
+  const [sex, setSex] = useState(data?.userData.sex);
+  const [birth, setBirth] = useState(data?.userData.birth);
 
   const [city, setCity] = useState(data?.address.city);
   const [street, setStreet] = useState(data?.address.street);
   const [number, setNumber] = useState(data?.address.number);
 
   useEffect(() => {
-    setEmail(data?.email);
     setNickname(data?.userData.nickname);
-    setAge(data?.userData.age);
-    setWeight(data?.userData.weight);
-    setHeight(data?.userData.height);
+    setSex(data?.userData.sex);
+    setBirth(data?.userData.birth);
 
     setCity(data?.address.city);
     setStreet(data?.address.street);
@@ -54,9 +50,8 @@ export default function Profile() {
       email: data?.email,
       userData: {
         nickname: e.target.nick.value,
-        age: e.target.age.value,
-        weight: e.target.weight.value,
-        height: e.target.height.value,
+        sex: e.target.sex.value,
+        birth: e.target.birth.value,
       },
     };
 
@@ -95,15 +90,6 @@ export default function Profile() {
             <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>NICKNAME</h3>
               <Input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <label htmlFor="nombre" className={styles["section-form__label"]}>
-              <h3 className={styles["section-form__h3"]}>EDAD</h3>
-              <Input
                 type="text"
                 name="nick"
                 value={nickname}
@@ -111,14 +97,26 @@ export default function Profile() {
               />
             </label>
             <label htmlFor="nombre" className={styles["section-form__label"]}>
+              <h3 className={styles["section-form__h3"]}>SEXO</h3>
+              <SelectResponsive
+                name="sex"
+                value={sex}
+                id="sex"
+                onChange={(e) => setSex(e.target.value)}
+              >
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+              </SelectResponsive>
+            </label>
+            <label htmlFor="nombre" className={styles["section-form__label"]}>
               <h3 className={styles["section-form__h3"]}>
                 FECHA DE NACIMIENTO
               </h3>
               <Input
-                type="text"
-                name="age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
+                type="date"
+                name="birth"
+                value={birth}
+                onChange={(e) => setBirth(e.target.value)}
               />
             </label>
             <StraightButton color="#ac1a22" width="266px" secondWidth="356px">
