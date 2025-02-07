@@ -128,3 +128,16 @@ export async function createOrder(productID: string) {
     return order;
   }
 }
+
+export async function getOrders() {
+  const state = localStorage.getItem("saved-state");
+  const parsedState = JSON.parse(state);
+
+  const order = await fetchAPI("/me/orders", {
+    headers: {
+      "content-type": "application/json",
+      authorization: `bearer ${parsedState.token}`,
+    },
+  });
+  return order;
+}
