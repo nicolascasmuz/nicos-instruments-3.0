@@ -7,23 +7,37 @@ import { PurchaseCard } from "components/purchase-card";
 import { getOrders } from "lib/api";
 
 export default function Profile() {
-  const [products, setProducts] = useState([]);
+  const [purchase, setPurchase] = useState("realizadas");
+  const [display, setDisplay] = useState(false);
+
+  const [approvedProducts, setApprovedProducts] = useState([]);
+  const [pendingProducts, setPendingProducts] = useState([]);
 
   async function pullResults() {
     const res: any = await getOrders();
 
-    const results = res.map((r) => {
-      return r.preference.items[0];
+    const approvedResults = res?.filter((r) => {
+      return r.status == "approved";
     });
 
-    console.log("results: ", results);
+    const pendingResults = res?.filter((r) => {
+      return r.status == "pending";
+    });
 
-    setProducts(results);
+    setApprovedProducts(approvedResults);
+    setPendingProducts(pendingResults);
   }
 
-  /* function handleChange(e) {
-    setOrder(e.target.value);
-  } */
+  function handleChange(e) {
+    if (e.target.value == "approved") {
+      setPurchase(e.target.value);
+      setDisplay(false);
+    }
+    if (e.target.value == "pending") {
+      setPurchase(e.target.value);
+      setDisplay(true);
+    }
+  }
 
   useEffect(() => {
     pullResults();
@@ -36,62 +50,41 @@ export default function Profile() {
           <PrimaryTitle size="50px">Mis compras</PrimaryTitle>
           <Select
             name="me"
-            /* value={me}  onChange={handleChange} */
+            value={purchase}
+            onChange={handleChange}
             width="50%"
           >
             <option value="approved">REALIZADAS</option>
             <option value="pending">PENDIENTES</option>
           </Select>
           <div
-            /* style={{ display: display ? "none" : "grid" }} */
-            style={{ display: "grid" }}
+            style={{ display: display ? "none" : "grid" }}
             className={styles["modify-data-form"]}
           >
-            {products?.map((r, index) => (
+            {approvedProducts?.map((r, index) => (
               <PurchaseCard
                 key={index}
-                name={r.title}
-                price={r.unit_price}
-                pic={r.pic}
+                name={r.preference.items[0].title}
+                price={r.preference.items[0].unit_price}
+                pic={r.preference.items[0].picture_url}
+                buttonText="Ver"
               />
             ))}
           </div>
-          {/* <form
+          <div
             style={{ display: display ? "grid" : "none" }}
             className={styles["modify-data-form"]}
-            onSubmit={HandleAddressSubmit}
           >
-            <label htmlFor="nombre" className={styles["section-form__label"]}>
-              <h3 className={styles["section-form__h3"]}>CIUDAD</h3>
-              <Input
-                type="text"
-                name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+            {pendingProducts?.map((r, index) => (
+              <PurchaseCard
+                key={index}
+                name={r.preference.items[0].title}
+                price={r.preference.items[0].unit_price}
+                pic={r.preference.items[0].picture_url}
+                buttonText="comprar"
               />
-            </label>
-            <label htmlFor="nombre" className={styles["section-form__label"]}>
-              <h3 className={styles["section-form__h3"]}>CALLE</h3>
-              <Input
-                type="text"
-                name="street"
-                value={street}
-                onChange={(e) => setStreet(e.target.value)}
-              />
-            </label>
-            <label htmlFor="nombre" className={styles["section-form__label"]}>
-              <h3 className={styles["section-form__h3"]}>NÚMERO</h3>
-              <Input
-                type="text"
-                name="number"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
-              />
-            </label>
-            <StraightButton color="#ac1a22" width="266px" secondWidth="356px">
-              Editar
-            </StraightButton>
-          </form> */}
+            ))}
+          </div>
         </div>
       </section>
     </Layout>

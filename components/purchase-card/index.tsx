@@ -11,7 +11,7 @@ export function PurchaseCard(props) {
     const attribute = e.target.getAttribute("name");
     const attModified = attribute.toLowerCase().replaceAll(" ", "-");
 
-    router.push("/product/" + attModified);
+    router.push("/approved-purchase/" + attModified);
   }
 
   return (
@@ -31,12 +31,12 @@ export function PurchaseCard(props) {
       </PriceText>
       <RoundedButton
         className={styles["card__button"]}
-        /* name={props.name}
-                  onClick={HandleClick} */
+        name={props.name}
+        onClick={HandleClick}
         color="#ac1a22"
         width="75px"
       >
-        Ver mas...
+        {props.buttonText}
       </RoundedButton>
     </div>
   );

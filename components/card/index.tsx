@@ -35,7 +35,7 @@ export function Card(props) {
           color="#ac1a22"
           width="75px"
         >
-          Ver mas...
+          Ver más...
         </RoundedButton>
       </div>
     </div>
