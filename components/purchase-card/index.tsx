@@ -8,10 +8,7 @@ export function PurchaseCard(props) {
 
   function HandleClick(e) {
     e.preventDefault();
-    const attribute = e.target.getAttribute("name");
-    const attModified = attribute.toLowerCase().replaceAll(" ", "-");
-
-    router.push("/approved-purchase/" + attModified);
+    router.push("/approved-purchase/" + props.id);
   }
 
   return (
@@ -31,7 +28,6 @@ export function PurchaseCard(props) {
       </PriceText>
       <RoundedButton
         className={styles["card__button"]}
-        name={props.name}
         onClick={HandleClick}
         color="#ac1a22"
         width="75px"

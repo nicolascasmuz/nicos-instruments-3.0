@@ -4,8 +4,10 @@ import { useParams } from "next/navigation";
 import { Details } from "../../components/details";
 import { searchProducts } from "lib/api";
 import Layout from "components/layout";
+import { useOrderByID } from "lib/hooks";
+import { useRouter } from "next/router";
 
-export default function ProductPage() {
+export default function ApprovedPurchase() {
   const BodySection = styled.section`
     display: flex;
     flex-direction: column;
@@ -49,21 +51,10 @@ export default function ProductPage() {
     }
   `;
 
-  const params = useParams();
-  const [products, setProducts] = useState([]);
+  const router = useRouter();
+  const query: any = router.query;
 
-  async function pullResult(p) {
-    const res = await searchProducts(p);
-    const item = res.results;
-
-    setProducts(item);
-  }
-
-  useEffect(() => {
-    if (params?.purchase) {
-      pullResult(params.purchase);
-    }
-  }, [params]);
+  const data: any = useOrderByID(query.purchase);
 
   return (
     <Layout>
@@ -71,17 +62,14 @@ export default function ProductPage() {
         <div className="general-section__wrapper">
           <h2 className="h2__category"></h2>
           <div className="card-wrapper">
-            {products.map((r, index) => (
-              <Details
-                key={index}
-                id={r.objectID}
-                pic={r.pic}
-                title={r.name}
-                description={r.description}
-                price={r.price}
-                cat={r.category}
-              />
-            ))}
+            <Details
+              id={data?.preference.external_reference}
+              pic={data?.preference.items[0].picture_url}
+              title={data?.preference.items[0].title}
+              description={data?.preference.items[0].description}
+              price={data?.preference.items[0].unit_price}
+              cat={data?.preference.items[0].quantity}
+            />
           </div>
         </div>
       </BodySection>

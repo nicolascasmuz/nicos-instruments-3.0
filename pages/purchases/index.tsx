@@ -67,6 +67,7 @@ export default function Profile() {
                 name={r.preference.items[0].title}
                 price={r.preference.items[0].unit_price}
                 pic={r.preference.items[0].picture_url}
+                id={r.preference.external_reference}
                 buttonText="Ver"
               />
             ))}
