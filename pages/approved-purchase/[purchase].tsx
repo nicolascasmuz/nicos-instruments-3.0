@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { Details } from "../../components/details";
-import { searchProducts } from "lib/api";
 import Layout from "components/layout";
 import { useOrderByID } from "lib/hooks";
 import { useRouter } from "next/router";
+import { PurchaseDetails } from "components/purchase-details";
 
 export default function ApprovedPurchase() {
   const BodySection = styled.section`
@@ -62,13 +59,14 @@ export default function ApprovedPurchase() {
         <div className="general-section__wrapper">
           <h2 className="h2__category"></h2>
           <div className="card-wrapper">
-            <Details
-              id={data?.preference.external_reference}
+            <PurchaseDetails
+              id={data?.productID}
+              date={data?.preference.date_created}
               pic={data?.preference.items[0].picture_url}
               title={data?.preference.items[0].title}
               description={data?.preference.items[0].description}
               price={data?.preference.items[0].unit_price}
-              cat={data?.preference.items[0].quantity}
+              quantity={data?.preference.items[0].quantity}
             />
           </div>
         </div>

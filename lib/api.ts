@@ -118,6 +118,7 @@ export async function createOrder(productID: string) {
   const state = localStorage.getItem("saved-state");
   const parsedState = JSON.parse(state);
   if (productID) {
+    console.log("productID: ", productID);
     const order = await fetchAPI(`/order?productID=${productID}`, {
       method: "POST",
       headers: {
