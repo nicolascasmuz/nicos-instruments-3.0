@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
 import { RoundedButton } from "ui/buttons";
-import { PriceText } from "ui/texts";
-import styles from "./purchase-card.module.css";
+import styles from "./approved-card.module.css";
 
-export function PurchaseCard(props) {
+export function ApprovedCard(props) {
   const router = useRouter();
 
   function HandleClick(e) {
@@ -23,16 +22,13 @@ export function PurchaseCard(props) {
           ? props.name
           : props.name.substring(0, 18) + "..."}
       </h2>
-      <PriceText className={styles["card__price"]} color="#080808">
-        ${props.price}
-      </PriceText>
       <RoundedButton
         className={styles["card__button"]}
         onClick={HandleClick}
         color="#ac1a22"
         width="75px"
       >
-        {props.buttonText}
+        ver
       </RoundedButton>
     </div>
   );

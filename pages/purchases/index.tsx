@@ -3,11 +3,12 @@ import Layout from "components/layout";
 import styles from "./profile.module.css";
 import { Select } from "ui/select";
 import { PrimaryTitle } from "ui/texts";
-import { PurchaseCard } from "components/purchase-card";
+import { ApprovedCard } from "components/approved-card";
 import { getOrders } from "lib/api";
+import { PendingCard } from "components/pending-card";
 
 export default function Profile() {
-  const [purchase, setPurchase] = useState("realizadas");
+  const [purchase, setPurchase] = useState("pending");
   const [display, setDisplay] = useState(false);
 
   const [approvedProducts, setApprovedProducts] = useState([]);
@@ -29,11 +30,11 @@ export default function Profile() {
   }
 
   function handleChange(e) {
-    if (e.target.value == "approved") {
+    if (e.target.value == "pending") {
       setPurchase(e.target.value);
       setDisplay(false);
     }
-    if (e.target.value == "pending") {
+    if (e.target.value == "approved") {
       setPurchase(e.target.value);
       setDisplay(true);
     }
@@ -54,21 +55,20 @@ export default function Profile() {
             onChange={handleChange}
             width="50%"
           >
-            <option value="approved">REALIZADAS</option>
             <option value="pending">PENDIENTES</option>
+            <option value="approved">REALIZADAS</option>
           </Select>
           <div
             style={{ display: display ? "none" : "grid" }}
             className={styles["modify-data-form"]}
           >
-            {approvedProducts?.map((r, index) => (
-              <PurchaseCard
+            {pendingProducts?.map((r, index) => (
+              <PendingCard
                 key={index}
                 name={r.preference.items[0].title}
-                price={r.preference.items[0].unit_price}
                 pic={r.preference.items[0].picture_url}
                 id={r.preference.external_reference}
-                buttonText="Ver"
+                init_point={r.preference.init_point}
               />
             ))}
           </div>
@@ -76,13 +76,12 @@ export default function Profile() {
             style={{ display: display ? "grid" : "none" }}
             className={styles["modify-data-form"]}
           >
-            {pendingProducts?.map((r, index) => (
-              <PurchaseCard
+            {approvedProducts?.map((r, index) => (
+              <ApprovedCard
                 key={index}
                 name={r.preference.items[0].title}
-                price={r.preference.items[0].unit_price}
                 pic={r.preference.items[0].picture_url}
-                buttonText="comprar"
+                id={r.preference.external_reference}
               />
             ))}
           </div>

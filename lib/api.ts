@@ -142,3 +142,15 @@ export async function getOrders() {
   });
   return order;
 }
+
+export async function deleteOrder(external_reference) {
+  if (external_reference) {
+    const deletedOrder = fetchAPI(`/order/${external_reference}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    return deletedOrder;
+  }
+}

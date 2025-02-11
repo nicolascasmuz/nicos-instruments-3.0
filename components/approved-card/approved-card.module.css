@@ -1,0 +1,41 @@
+.card-container {
+  display: grid;
+  grid-template-columns: 17% 60% 23%;
+  align-content: center;
+  align-items: center;
+  gap: 0 10px;
+  background-color: #f0efda;
+  border: solid 3px #ac1a22;
+  border-radius: 10px;
+  width: auto;
+  height: 70px;
+  overflow: hidden;
+  padding-right: 15px;
+}
+
+.card-img {
+  grid-column: 1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card__title {
+  grid-column: 2;
+  font-family: "Bungee", cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ac1a22;
+  line-height: 1.25;
+  text-align: left;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.card__price {
+  grid-column: 2;
+}
+
+.card__button {
+  grid-column: 3;
+}
