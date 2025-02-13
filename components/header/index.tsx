@@ -9,6 +9,7 @@ import { StraightButton } from "ui/buttons";
 import { Input, InputResponsive } from "ui/inputs";
 import styles from "./header.module.css";
 import { ProfileIcon } from "ui/icons";
+import { DropdownMenu } from "components/dropdown-menu";
 
 export function Header() {
   const router = useRouter();
@@ -129,13 +130,7 @@ export function Header() {
         >
           Iniciar sesión
         </a>
-        <a
-          className={styles["header__profile-pic"]}
-          href="/profile"
-          style={{ display: profilePicDisplay }}
-        >
-          <ProfileIcon />
-        </a>
+        <DropdownMenu style={{ display: profilePicDisplay }} />
       </nav>
     </div>
   );
