@@ -4,9 +4,13 @@ import Layout from "components/layout";
 import { StraightButton } from "ui/buttons";
 import { PrimaryTitle } from "ui/texts";
 import { Input, TextArea } from "ui/inputs";
+import { sendMail } from "lib/api";
+import { useRouter } from "next/navigation";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({});
+  const router = useRouter();
+  const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
+  // const navigate = useNavigate();
 
   /* const input1El = document.querySelector(".section-form__input-name");
   const input2El = document.querySelector(".section-form__input-email");
@@ -20,9 +24,20 @@ export default function ContactPage() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-  };
+
+    const mail = {
+      name: form.nombre,
+      email: form.email,
+      message: form.mensaje,
+    };
+
+    if (mail.name && mail.email && mail.message) {
+      await sendMail(mail);
+      router.push("/message-sent");
+    }
+  }
 
   return (
     <Layout>

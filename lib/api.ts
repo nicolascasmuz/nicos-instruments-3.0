@@ -154,3 +154,16 @@ export async function deleteOrder(external_reference) {
     return deletedOrder;
   }
 }
+
+export async function sendMail(mail) {
+  if (mail) {
+    const sentMail = fetchAPI("/send-mail", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(mail),
+    });
+    return sentMail;
+  }
+}

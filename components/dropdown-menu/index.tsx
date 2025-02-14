@@ -1,8 +1,18 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 import styles from "./header.module.css";
 import { ProfileIcon } from "ui/icons";
 
 export function DropdownMenu(props) {
+  const router = useRouter();
+
+  async function HandleClick(e) {
+    e.preventDefault();
+    localStorage.removeItem("saved-state");
+
+    router.refresh();
+  }
+
   return (
     <>
       <input
@@ -25,7 +35,11 @@ export function DropdownMenu(props) {
           <a className={styles["header__option_02"]} href="/purchases">
             Mis compras
           </a>
-          <a className={styles["header__option_02"]} href="/">
+          <a
+            onClick={HandleClick}
+            className={styles["header__option_02"]}
+            href="/"
+          >
             Cerrar sesión
           </a>
         </li>
