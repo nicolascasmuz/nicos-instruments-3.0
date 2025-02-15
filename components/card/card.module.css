@@ -3,8 +3,8 @@
   grid-template-rows: 100%;
   grid-template-columns: 50% 50%;
   gap: 0px;
-  background-color: #f0efda;
-  border: solid 3px #ac1a22;
+  background-color: var(--wheat);
+  border: solid 3px var(--red);
   border-radius: 10px;
   width: 320px;
   height: 200px;

@@ -10,15 +10,15 @@
 .signup-form__h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 20px;
-  color: #f0efda;
+  color: var(--wheat);
   margin: 0;
 }
 
 .signup-input {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
-  color: #fafafa;
-  background-color: #141414;
+  color: var(--white);
+  background-color: var(--black);
   border: none;
   width: 266px;
   height: 45px;
@@ -33,10 +33,10 @@
 .signup-button {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
-  color: #f0efda;
+  color: var(--wheat);
   text-align: center;
   border: none;
-  background-color: #ac1a22;
+  background-color: var(--red);
   width: 266px;
   height: 45px;
 }
@@ -59,8 +59,8 @@
 .code-input {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
-  color: #fafafa;
-  background-color: #141414;
+  color: var(--white);
+  background-color: var(--black);
   border: none;
   width: 266px;
   height: 45px;
@@ -75,10 +75,10 @@
 .code-button {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
-  color: #f0efda;
+  color: var(--wheat);
   text-align: center;
   border: none;
-  background-color: #ac1a22;
+  background-color: var(--red);
   width: 266px;
   height: 45px;
 }
@@ -92,11 +92,11 @@
 .signup-form__p {
   font-family: "Bebas Neue", cursive;
   font-size: 20px;
-  color: #f0efda;
+  color: var(--wheat);
   margin-top: 10px;
 }
 
 .signup-form__a {
-  color: #ac1a22;
+  color: var(--red);
   text-decoration: underline;
 }

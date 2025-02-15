@@ -28,7 +28,7 @@
   height: 0vh;
   top: 120px;
   right: 0;
-  background-color: #141414;
+  background-color: var(--black);
   opacity: 95%;
   text-align: center;
   transition: all 0.5s;
@@ -45,7 +45,7 @@
 }
 
 .header__menu-lista_02 li a {
-  color: #fafafa;
+  color: var(--white);
 }
 
 .header__menu-input_02 {

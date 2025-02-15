@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Layout from "components/layout";
-import styles from "./profile.module.css";
+import styles from "./purchases.module.css";
 import { Select } from "ui/select";
-import { PrimaryTitle } from "ui/texts";
+import { PrimaryTitle, SecondaryTitle } from "ui/texts";
 import { ApprovedCard } from "components/approved-card";
 import { getOrders } from "lib/api";
 import { PendingCard } from "components/pending-card";
 
-export default function Profile() {
+export default function Purchases() {
   const [purchase, setPurchase] = useState("pending");
   const [display, setDisplay] = useState(false);
 
@@ -62,28 +62,36 @@ export default function Profile() {
             style={{ display: display ? "none" : "grid" }}
             className={styles["modify-data-form"]}
           >
-            {pendingProducts?.map((r, index) => (
-              <PendingCard
-                key={index}
-                name={r.preference.items[0].title}
-                pic={r.preference.items[0].picture_url}
-                id={r.preference.external_reference}
-                init_point={r.preference.init_point}
-              />
-            ))}
+            {pendingProducts.length ? (
+              pendingProducts.map((r, index) => (
+                <PendingCard
+                  key={index}
+                  name={r.preference.items[0].title}
+                  pic={r.preference.items[0].picture_url}
+                  id={r.preference.external_reference}
+                  init_point={r.preference.init_point}
+                />
+              ))
+            ) : (
+              <SecondaryTitle>No tenés compras pendientes</SecondaryTitle>
+            )}
           </div>
           <div
             style={{ display: display ? "grid" : "none" }}
             className={styles["modify-data-form"]}
           >
-            {approvedProducts?.map((r, index) => (
-              <ApprovedCard
-                key={index}
-                name={r.preference.items[0].title}
-                pic={r.preference.items[0].picture_url}
-                id={r.preference.external_reference}
-              />
-            ))}
+            {approvedProducts.length ? (
+              approvedProducts.map((r, index) => (
+                <ApprovedCard
+                  key={index}
+                  name={r.preference.items[0].title}
+                  pic={r.preference.items[0].picture_url}
+                  id={r.preference.external_reference}
+                />
+              ))
+            ) : (
+              <SecondaryTitle>Aún no has comprado nada</SecondaryTitle>
+            )}
           </div>
         </div>
       </section>

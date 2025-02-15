@@ -4,8 +4,8 @@
   align-content: center;
   align-items: center;
   gap: 0 10px;
-  background-color: #f0efda;
-  border: solid 3px #ac1a22;
+  background-color: var(--wheat);
+  border: solid 3px var(--red);
   border-radius: 10px;
   width: auto;
   height: 70px;
@@ -25,7 +25,7 @@
   font-family: "Bungee", cursive;
   font-size: 18px;
   font-weight: 600;
-  color: #ac1a22;
+  color: var(--red);
   line-height: 1.25;
   text-align: left;
   text-overflow: ellipsis;

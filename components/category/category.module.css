@@ -28,7 +28,7 @@
   font-size: 50px;
   line-height: 40px;
   opacity: 0;
-  color: #ac1a22;
+  color: var(--red);
   margin: 0;
   transition: all 0.25s;
 }
