@@ -6,6 +6,7 @@ import Layout from "components/layout";
 import { searchProducts } from "lib/api";
 import { Select } from "ui/select";
 import { PrimaryTitle } from "ui/texts";
+import Pagination from "components/pagination";
 
 export default function CategoryPage() {
   const params: any = useParams();
@@ -86,6 +87,7 @@ export default function CategoryPage() {
               <Card key={index} name={r.name} price={r.price} pic={r.pic} />
             ))}
           </div>
+          <Pagination totalItems={20} itemsPerPage={6} onPageChange={1} />
         </div>
       </section>
     </Layout>
