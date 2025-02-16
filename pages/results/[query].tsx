@@ -6,15 +6,18 @@ import Layout from "components/layout";
 import { searchProducts } from "lib/api";
 import { Select } from "ui/select";
 import { PrimaryTitle } from "ui/texts";
+import Pagination from "components/pagination";
 
 export default function ResultsPage() {
   const params = useParams();
 
   const [results, setResults] = useState([]);
+  const [pagination, setPagination] = useState(null);
+  const [offset, setOffset] = useState(0);
   const [order, setOrder] = useState("menor precio");
 
-  async function pullResults(q, order) {
-    const res = await searchProducts(q);
+  async function pullResults(q, offset, order) {
+    const res = await searchProducts(q, offset);
 
     const items = res.results;
     const lowerCaseQuery = q.toLowerCase();
@@ -66,9 +69,9 @@ export default function ResultsPage() {
 
   useEffect(() => {
     if (params?.query) {
-      pullResults(params.query, order);
+      pullResults(params.query, offset, order);
     }
-  }, [params, order]);
+  }, [params, offset, order]);
 
   return (
     <Layout>
@@ -97,6 +100,14 @@ export default function ResultsPage() {
               ))
             )}
           </div>
+          <Pagination
+            totalItems={pagination?.total}
+            itemsPerPage={pagination?.limit}
+            onPageChange={(page) => {
+              const offset = (page - 1) * pagination?.limit;
+              setOffset(offset);
+            }}
+          />
         </div>
       </section>
     </Layout>

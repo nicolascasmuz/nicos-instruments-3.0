@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { RoundedButton } from "ui/buttons";
+import { LeftArrowIcon, RightArrowIcon } from "ui/icons";
 
 type PaginationProps = {
   totalItems: number;
@@ -34,35 +36,22 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const renderPageNumbers = () => {
     return Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-      <button
+      <RoundedButton
         key={page}
-        className={`px-3 py-2 mx-1 rounded ${
-          page === currentPage ? "bg-blue-500 text-white" : "bg-gray-200"
-        }`}
         onClick={() => handlePageClick(page)}
+        color="#f0efda"
+        width="25px"
       >
         {page}
-      </button>
+      </RoundedButton>
     ));
   };
 
   return (
-    <div className="flex justify-center items-center mt-4">
-      <button
-        onClick={handlePrev}
-        disabled={currentPage === 1}
-        className="px-4 py-2 mx-2 bg-gray-300 rounded disabled:opacity-50"
-      >
-        Anterior
-      </button>
+    <div>
+      <LeftArrowIcon onClick={handlePrev} />
       {renderPageNumbers()}
-      <button
-        onClick={handleNext}
-        disabled={currentPage === totalPages}
-        className="px-4 py-2 mx-2 bg-gray-300 rounded disabled:opacity-50"
-      >
-        Siguiente
-      </button>
+      <RightArrowIcon onClick={handleNext} />
     </div>
   );
 };

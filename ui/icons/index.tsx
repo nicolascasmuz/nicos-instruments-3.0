@@ -7,6 +7,8 @@ import ProfileIconSVG from "./profile-icon.svg";
 import VisaIconSVG from "./visa-icon.svg";
 import MasterIconSVG from "./master-icon.svg";
 import AmericanIconSVG from "./american-icon.svg";
+import LeftArrowSVG from "./left-arrow.svg";
+import RightArrowSVG from "./right-arrow.svg";
 
 export const WhatsappIcon = styled(WhatsappIconSVG)`
   width: 35px;
@@ -46,4 +48,14 @@ export const MasterIcon = styled(MasterIconSVG)`
 export const AmericanIcon = styled(AmericanIconSVG)`
   width: 50px;
   height: 50px;
+`;
+
+export const LeftArrowIcon = styled(LeftArrowSVG)`
+  width: 35px;
+  height: 35px;
+`;
+
+export const RightArrowIcon = styled(RightArrowSVG)`
+  width: 35px;
+  height: 35px;
 `;

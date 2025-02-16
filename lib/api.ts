@@ -76,10 +76,10 @@ export async function saveToken(email: string, code: number) {
   }
 }
 
-export async function searchProducts(product: string) {
+export async function searchProducts(product: string, offset: number) {
   if (product) {
     const foundProduct = await fetchAPI(
-      `/search?q=${product}&limit=6&offset=0`,
+      `/search?q=${product}&limit=6&offset=${offset}`,
       {
         headers: {
           "content-type": "application/json",

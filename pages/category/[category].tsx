@@ -13,15 +13,18 @@ export default function CategoryPage() {
   const paramsReplaced = params?.category.replace("-", " ") || "";
 
   const [products, setProducts] = useState([]);
+  const [pagination, setPagination] = useState(null);
+  const [offset, setOffset] = useState(0);
   const [order, setOrder] = useState("menor precio");
 
-  async function pullResults(c, order) {
-    const res = await searchProducts(c);
+  async function pullResults(category, offset, order) {
+    const res = await searchProducts(category, offset);
     const items = res.results;
+    setPagination(res.pagination);
 
     if (order === "menor precio") {
       const searchProduct = items.filter((p) => {
-        const filteredProducts = p.category === c;
+        const filteredProducts = p.category === category;
         return filteredProducts;
       });
 
@@ -38,7 +41,7 @@ export default function CategoryPage() {
       setProducts(lowerPrice);
     } else if (order === "mayor precio") {
       const searchProduct = items.filter((p) => {
-        const filteredProducts = p.category === c;
+        const filteredProducts = p.category === category;
         return filteredProducts;
       });
 
@@ -62,9 +65,9 @@ export default function CategoryPage() {
 
   useEffect(() => {
     if (params?.category) {
-      pullResults(params.category, order);
+      pullResults(params.category, offset, order);
     }
-  }, [params, order]);
+  }, [params, offset, order]);
 
   return (
     <Layout>
@@ -87,7 +90,14 @@ export default function CategoryPage() {
               <Card key={index} name={r.name} price={r.price} pic={r.pic} />
             ))}
           </div>
-          <Pagination totalItems={20} itemsPerPage={6} onPageChange={1} />
+          <Pagination
+            totalItems={pagination?.total}
+            itemsPerPage={pagination?.limit}
+            onPageChange={(page) => {
+              const offset = (page - 1) * pagination?.limit;
+              setOffset(offset);
+            }}
+          />
         </div>
       </section>
     </Layout>
