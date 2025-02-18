@@ -1,256 +1,114 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import Image from "next/image";
-import arrowLeft from "../../resources/arrow-left.png";
-import arrowRight from "../../resources/arrow-right.png";
+import React, { useState, useEffect, useCallback } from "react";
+import { usePrevNextButtons } from "./EmblaCarouselArrowButtons";
+import useEmblaCarousel from "embla-carousel-react";
+import styles from "./carousel.module.css";
+import { LeftArrowIcon, RightArrowIcon } from "ui/icons";
+import { searchBestProducts } from "lib/api";
+import { useRouter } from "next/router";
 
-const CarouselDiv = styled.div`
-    min-width: 300px;
-    max-width: 1000px;
-    position: relative;
-    margin: 0 30px;
-
-    .carousel-wrapper .arrow {
-      top: 50%;
-      height: 46px;
-      width: 46px;
-      cursor: pointer;
-      position: absolute;
-      transform: translateY(-50%);
-    }
-  
-    .carousel-wrapper .arrow:first-child {
-      left: 12px;
-      z-index: 10;
-    }
-  
-    .carousel-wrapper .arrow:last-child {
-      right: 13px;
-      z-index: 10;
-    }
-  
-    .carousel-wrapper .carousel {
-      cursor: pointer;
-      overflow: hidden;
-      white-space: nowrap;
-      scroll-behavior: smooth;
-      margin: 0 35px;
-    }
-
-    .carousel {
-      gap: 8px;
-    }
-
-    .carousel.dragging {
-      cursor: grab;
-      scroll-behavior: auto;
-    }
-
-    .carousel.dragging img {
-      pointer-events: none;
-    }
-  
-    .carousel img {
-      height: 340px;
-      object-fit: cover;
-      width: 100%;
-      margin-right: 8px;
-    }
-  
-    @media (min-width: 469px) {
-      .carousel img {
-        height: 340px;
-        object-fit: cover;
-        width: calc(100% / 2);
-        margin-right: 8px;
-      }
-    }
-  
-    @media (min-width: 769px) {
-      .carousel img {
-        height: 340px;
-        object-fit: cover;
-        width: calc(100% / 3);
-        margin-right: 8px;
-      }
-    }
-  
-    .carousel img:first-child {
-      margin-left: 0px;
-    }
-
-    .cat-container {
-      position: relative;
-      height: 176px;
-      text-align: center;
-    }
-
-    @media (min-width: 1000px) {
-      .cat-container {
-        height: 238px;
-      }
-    }
-
-    .cat-container .cat-img {
-      transition: all 0.25s;
-    }
-
-    .text-overlay {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-    }
-
-    .cat-container .text-overlay {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-family: "Bebas Neue", cursive;
-      font-size: 25px;
-      opacity: 0;
-      color: #fafafa;
-      margin: 0;
-      transition: all 0.25s;
-    }
-
-    .cat-container:hover {
-      .text-overlay {
-        opacity: 1;
-      }
-      .cat-img {
-        filter: blur(3px) brightness(0.2);
-      }
-    }
-    }
-  `;
-
-export function CarouselComp() {
+const CarouselComp = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [products, setProducts] = useState([]);
-  const [resultsFetched, setResultsFetched] = useState(false);
-
-  useEffect(() => {
-    if (!resultsFetched) {
-      pullResults();
-      setResultsFetched(true);
-    }
-  }, [resultsFetched]);
+  const router = useRouter();
 
   async function pullResults() {
-    fetch(
-      "https://preview.contentful.com/spaces/boc2rp8m0dgi/environments/master/entries?access_token=Y1_N0gShtcshwQbkaOPc2u0lA-7zD8351Q0NWQCRCsU&&content_type=nicosStock"
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        const items = data.items;
+    const res = await searchBestProducts();
+    const items = res.results;
 
-        const sortProducts = items.sort((pA, pB) => {
-          if (pA.fields.price < pB.fields.price) {
-            return 1;
-          }
-          if (pA.fields.price > pB.fields.price) {
-            return -1;
-          }
-          return 0;
-        });
+    const higherPrice = items.sort((pA, pB) => pB.price - pA.price);
+    const bestProducts = higherPrice.slice(0, 6);
 
-        const bestProducts = sortProducts.slice(0, 6);
-
-        setProducts(bestProducts);
-      });
+    setProducts(bestProducts);
   }
 
   useEffect(() => {
-    const carouselEl = document.querySelector(".carousel");
-    const firstImgEl = carouselEl
-      ? carouselEl.querySelectorAll("img")[0]
-      : null;
-    const arrowsEl = document.querySelectorAll(".carousel-wrapper .arrow");
+    pullResults();
+  }, []);
 
-    const interval = setInterval(() => {
-      if (carouselEl) {
-        carouselEl.scrollLeft++;
-      }
-    }, 100);
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi);
 
-    let isDragStart = false,
-      prevPageX,
-      prevScrollLeft;
+  // Función para mover al siguiente slide
+  const nextSlide = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
-    let firstImgWidth = firstImgEl ? firstImgEl.clientWidth + 40 : 0;
+  useEffect(() => {
+    if (!emblaApi) return;
 
-    arrowsEl.forEach((arrow) => {
-      arrow.addEventListener("click", () => {
-        clearInterval(interval);
-        if (carouselEl) {
-          carouselEl.scrollLeft +=
-            arrow.id === "left" ? -firstImgWidth : firstImgWidth;
-        }
-      });
+    const interval = setInterval(nextSlide, 3000); // Cambia cada 3 segundos
+
+    // Pausar al interactuar manualmente
+    emblaApi.on("pointerDown", () => clearInterval(interval));
+    emblaApi.on("pointerUp", () => {
+      setTimeout(() => {
+        const newInterval = setInterval(nextSlide, 3000);
+        emblaApi.on("pointerDown", () => clearInterval(newInterval));
+      }, 500);
     });
 
-    function dragStart(e) {
-      isDragStart = true;
-      prevPageX = e.pageX;
-      prevScrollLeft = carouselEl ? carouselEl.scrollLeft : 0;
-    }
+    return () => clearInterval(interval);
+  }, [emblaApi, nextSlide]);
 
-    function dragging(e) {
-      if (!isDragStart || !carouselEl) return;
-      e.preventDefault();
-      carouselEl.classList.add("dragging");
-      let positionDiff = e.pageX - prevPageX;
-      carouselEl.scrollLeft = prevScrollLeft - positionDiff;
-    }
+  function HandleClick(e) {
+    e.preventDefault();
+    const attribute = e.target.getAttribute("id");
+    const attModified = attribute.toLowerCase().replaceAll(" ", "-");
 
-    function dragStop() {
-      isDragStart = false;
-      if (carouselEl) {
-        carouselEl.classList.remove("dragging");
-      }
-    }
-
-    if (carouselEl) {
-      carouselEl.addEventListener("mousedown", (e) => {
-        dragStart(e);
-        clearInterval(interval);
-      });
-      carouselEl.addEventListener("mousemove", dragging);
-      carouselEl.addEventListener("mouseup", dragStop);
-    }
-  }, [products]);
+    router.push("/product/" + attModified);
+  }
 
   return (
-    <CarouselDiv>
-      <div className="carousel-wrapper">
-        <Image id="left" className="arrow" src={arrowLeft} alt="arrow-left" />
-        <div className="carousel">
+    <section className={styles["embla"]}>
+      <div className={styles["embla__viewport"]} ref={emblaRef}>
+        <div className={styles["embla__container"]}>
           {products.map((r, index) => (
-            <div className="cat-container" key={index}>
+            <div
+              className={styles["cat-container"]}
+              key={index}
+              onClick={HandleClick}
+            >
               <img
-                className="cat-img"
-                src={r.fields.url}
-                alt={r.fields.title.toLowerCase().replaceAll(" ", "-")}
+                className={styles["cat-img"]}
+                src={r.pic}
+                alt={r.name.toLowerCase().replaceAll(" ", "-")}
+                id={r.name}
               />
-              <div className="text-overlay">
+              <div className={styles["text-overlay"]}>
                 <span>
-                  {r.fields.title.length > 20
-                    ? `${r.fields.title.substring(0, 20)}...`
-                    : r.fields.title}
+                  {r.name.length > 20
+                    ? `${r.name.substring(0, 20)}...`
+                    : r.name}
                 </span>
-                <span>${r.fields.price}</span>
+                <span>${r.price}</span>
               </div>
             </div>
           ))}
         </div>
-        <Image
-          id="right"
-          className="arrow"
-          src={arrowRight}
-          alt="arrow-right"
-        />
       </div>
-    </CarouselDiv>
+
+      <div className={styles["embla__controls"]}>
+        <div className={styles["embla__buttons"]}>
+          <LeftArrowIcon
+            onClick={() => {
+              onPrevButtonClick();
+            }}
+            disabled={prevBtnDisabled}
+          />
+          <RightArrowIcon
+            onClick={() => {
+              onNextButtonClick();
+            }}
+            disabled={nextBtnDisabled}
+          />
+        </div>
+      </div>
+    </section>
   );
-}
+};
+
+export default CarouselComp;

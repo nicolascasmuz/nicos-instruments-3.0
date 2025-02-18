@@ -53,7 +53,7 @@ export default function ProductPage() {
   const [products, setProducts] = useState([]);
 
   async function pullResult(p) {
-    const res = await searchProducts(p);
+    const res = await searchProducts(p, 0);
     const item = res.results;
 
     setProducts(item);

@@ -90,6 +90,15 @@ export async function searchProducts(product: string, offset: number) {
   }
 }
 
+export async function searchBestProducts() {
+  const foundProduct = await fetchAPI(`/search?q=&limit=&offset=0`, {
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  return foundProduct;
+}
+
 export async function editData(newData) {
   if (newData) {
     fetchAPI("/me", {

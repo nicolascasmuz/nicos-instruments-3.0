@@ -1,18 +1,8 @@
 import React, { useState } from "react";
-import { RoundedButton } from "ui/buttons";
 import { LeftArrowIcon, RightArrowIcon } from "ui/icons";
+import styles from "./pagination.module.css";
 
-type PaginationProps = {
-  totalItems: number;
-  itemsPerPage: number;
-  onPageChange: (page: number) => void;
-};
-
-const Pagination: React.FC<PaginationProps> = ({
-  totalItems,
-  itemsPerPage,
-  onPageChange,
-}) => {
+export default function Pagination({ totalItems, itemsPerPage, onPageChange }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -36,27 +26,30 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const renderPageNumbers = () => {
     return Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-      <RoundedButton
+      <button
+        className={styles["pagination__button"]}
         key={page}
         onClick={() => handlePageClick(page)}
-        color="#f0efda"
-        width="25px"
       >
         {page}
-      </RoundedButton>
+      </button>
     ));
   };
 
   return (
-    <div>
-      <LeftArrowIcon onClick={handlePrev} />
+    <div
+      className={styles["pagination__div"]}
+      style={{ display: totalItems >= 6 ? "flex" : "none" }}
+    >
+      <LeftArrowIcon
+        className={styles["pagination__arrow"]}
+        onClick={handlePrev}
+      />
       {renderPageNumbers()}
-      <RightArrowIcon onClick={handleNext} />
+      <RightArrowIcon
+        className={styles["pagination__arrow"]}
+        onClick={handleNext}
+      />
     </div>
   );
-};
-
-export default Pagination;
-
-// Uso del componente:
-// <Pagination totalItems={100} itemsPerPage={10} onPageChange={(page) => console.log('Página:', page)} />
+}

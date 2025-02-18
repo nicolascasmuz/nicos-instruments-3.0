@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import styles from "./main.module.css";
-import { CarouselComp } from "../../components/carousel";
+import CarouselComp from "../../components/carousel";
 import { CategoryComp } from "../../components/category";
 import { Brands } from "../../components/brands";
 import classicGuitars from "../../resources/classic-guitars-cat.webp";
