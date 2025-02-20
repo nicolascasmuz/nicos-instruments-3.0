@@ -10,12 +10,6 @@ import { useRouter } from "next/navigation";
 export default function ContactPage() {
   const router = useRouter();
   const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
-  // const navigate = useNavigate();
-
-  /* const input1El = document.querySelector(".section-form__input-name");
-  const input2El = document.querySelector(".section-form__input-email");
-  const input3El = document.querySelector(".section-form__textarea");
-  const errorEl = document.querySelector(".section-form__error"); */
 
   const handleChange = (e) => {
     setForm({
@@ -72,8 +66,8 @@ export default function ContactPage() {
               <h3 className={styles["section-form__h3"]}>MENSAJE</h3>
               <TextArea
                 id="mensaje"
-                cols="30"
-                rows="10"
+                cols={30}
+                rows={10}
                 name="mensaje"
                 value={form.mensaje}
                 onChange={handleChange}

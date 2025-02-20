@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const PrimaryTitle = styled.h1`
+interface TextProps {
+  size?: string;
+}
+
+export const PrimaryTitle = styled.h1<TextProps>`
   font-family: "Bungee Shade", cursive;
   font-size: ${(props) => props.size};
   font-weight: 600;
@@ -10,7 +14,7 @@ export const PrimaryTitle = styled.h1`
   margin: 0;
 `;
 
-export const SecondaryTitle = styled.h2`
+export const SecondaryTitle = styled.h2<TextProps>`
   font-family: "Bungee", cursive;
   font-size: ${(props) => props.size};
   font-weight: 600;
