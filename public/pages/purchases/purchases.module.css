@@ -1,0 +1,125 @@
+.general-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--purple);
+  min-height: calc(100vh - 260px);
+  overflow: auto;
+  padding: 40px 60px;
+}
+
+.general-section__wrapper {
+  display: grid;
+  justify-items: center;
+  align-items: flex-start;
+  gap: 25px 0;
+}
+
+@media (min-width: 769px) {
+  .general-section__wrapper {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 0 25px;
+  }
+}
+
+.h2__art-des {
+  font-family: "Bungee Shade", cursive;
+  text-align: center;
+  font-size: 32px;
+  color: var(--wheat);
+  line-height: 1;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .h2__art-des {
+    text-align: left;
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 50px;
+    max-width: 400px;
+  }
+}
+
+.results__select {
+  align-self: center;
+  background-color: var(--black);
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 25px;
+  color: var(--white);
+  width: 50%;
+  height: 45px;
+}
+
+@media (min-width: 769px) {
+  .results__select {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.modify-data-form {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  height: 320px;
+  min-width: 450px;
+}
+
+@media (min-width: 769px) {
+  .modify-data-form {
+    grid-column: 2;
+    grid-row: 2;
+    width: 320px;
+    overflow: scroll;
+  }
+}
+
+.section-form__h3 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  color: var(--wheat);
+  margin: 0;
+}
+
+.login-input {
+  background-color: var(--black);
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 25px;
+  color: var(--white);
+  width: 100%;
+  height: 45px;
+}
+
+@media (min-width: 1069px) {
+  .login-input {
+    width: 356px;
+  }
+}
+
+.section-form__error {
+  display: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  color: var(--secondaryRed);
+  margin: 0;
+}
+
+.login-button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: #f0efda;
+  text-align: center;
+  border: none;
+  background-color: var(--red);
+  width: 100%;
+  height: 45px;
+  transition: all 0.25s;
+}
+
+.login-button:hover {
+  opacity: 85%;
+}

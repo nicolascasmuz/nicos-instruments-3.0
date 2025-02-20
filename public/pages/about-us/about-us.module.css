@@ -1,0 +1,100 @@
+.general-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--purple);
+  min-height: calc(100vh - 260px);
+  overflow: auto;
+  padding: 40px 60px;
+}
+
+.general-section__wrapper {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto;
+  justify-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 769px) {
+  .general-section__wrapper {
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    justify-items: initial;
+    gap: 20px;
+  }
+}
+
+.about-us__title {
+  grid-row: 1;
+  grid-column: 1;
+  font-family: "Bungee Shade", cursive;
+  font-size: 25px;
+  color: var(--wheat);
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .about-us__title {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+  }
+}
+
+.about-us__pic {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+@media (min-width: 769px) {
+  .about-us__pic {
+    grid-row: 2;
+    grid-column: 1;
+  }
+}
+
+.about-us__shop {
+  width: 270px;
+  height: 180px;
+}
+
+@media (min-width: 1069px) {
+  .about-us__shop {
+    width: 375px;
+    height: 250px;
+  }
+}
+
+.about-us__epigraph {
+  display: block;
+  grid-row: 2;
+  grid-column: 1;
+  font-family: "Bebas Neue", cursive;
+  font-size: 14px;
+  color: var(--wheat);
+  margin: 0;
+}
+
+.about-us__text {
+  grid-row: 3;
+  grid-column: 1;
+  font-family: "Bebas Neue", cursive;
+  font-size: 18px;
+  color: var(--wheat);
+  width: 300px;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .about-us__text {
+    grid-row: 2;
+    grid-column: 2;
+    width: 450px;
+  }
+}
+
+@media (min-width: 1069px) {
+  .about-us__text {
+    width: 600px;
+  }
+}

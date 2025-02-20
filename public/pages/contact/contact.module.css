@@ -1,0 +1,114 @@
+.general-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--purple);
+  min-height: calc(100vh - 260px);
+  overflow: auto;
+  padding: 40px 60px;
+}
+
+.general-section__wrapper {
+  display: grid;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+@media (min-width: 769px) {
+  .general-section__wrapper {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+  }
+}
+
+.section-form__form {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+  max-width: 425px;
+  min-width: 315px;
+}
+
+@media (min-width: 769px) {
+  .section-form__form {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.section-form__title {
+  font-family: "Bungee Shade", cursive;
+  text-align: center;
+  font-size: 32px;
+  color: var(--wheat);
+  line-height: 1;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .section-form__title {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 50px;
+  }
+}
+
+.section-form__h3 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  color: var(--wheat);
+  margin: 0;
+}
+
+.section-form__input-name {
+  background-color: var(--black);
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 25px;
+  color: var(--white);
+  width: 100%;
+  height: 45px;
+}
+
+.section-form__input-email {
+  background-color: var(--black);
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 25px;
+  color: var(--white);
+  width: 100%;
+  height: 45px;
+}
+
+.section-form__textarea {
+  background-color: var(--black);
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 18px;
+  color: var(--white);
+  width: 100%;
+  height: 160px;
+}
+
+.section-form__error {
+  display: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  color: var(--secondaryRed);
+  margin: 0;
+}
+
+.section-form__button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  color: var(--wheat);
+  text-align: center;
+  border: none;
+  background-color: var(--red);
+  height: 45px;
+  transition: all 0.25s;
+}
+
+.section-form__button:hover {
+  opacity: 85%;
+}

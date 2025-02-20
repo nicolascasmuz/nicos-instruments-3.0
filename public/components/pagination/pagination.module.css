@@ -1,0 +1,42 @@
+.pagination__div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  align-self: center;
+}
+
+.pagination__button {
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  color: var(--purple);
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--wheat);
+  width: 25px;
+  height: 35px;
+  transition: all 0.25s;
+}
+
+.pagination__button:hover {
+  opacity: 85%;
+}
+
+.pagination__button:active {
+  width: 18px;
+  height: 25px;
+}
+
+.pagination__arrow {
+  transition: all 0.25s;
+}
+
+.pagination__arrow:hover {
+  opacity: 85%;
+}
+
+.pagination__arrow:active {
+  width: 25px;
+  height: 25px;
+}

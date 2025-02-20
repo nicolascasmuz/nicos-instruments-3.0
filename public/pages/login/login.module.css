@@ -1,0 +1,10 @@
+.general-comp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--purple);
+  min-height: calc(100vh - 260px);
+  overflow: auto;
+  padding: 40px 0;
+}

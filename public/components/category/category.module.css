@@ -1,0 +1,67 @@
+.cat-general-container {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 700px) {
+  .cat-general-container {
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+  }
+}
+
+.cat-container {
+  position: relative;
+  text-align: center;
+}
+
+.cat-container .cat-img {
+  transition: all 0.25s;
+}
+
+.cat-container .text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Bebas Neue", cursive;
+  font-size: 50px;
+  line-height: 40px;
+  opacity: 0;
+  color: var(--red);
+  margin: 0;
+  transition: all 0.25s;
+}
+
+@media (min-width: 1000px) {
+  .cat-container .text-overlay {
+    font-size: 65px;
+    line-height: 55px;
+  }
+}
+
+.cat-img {
+  width: 312px;
+  height: 176px;
+}
+
+@media (min-width: 1000px) {
+  .cat-img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .cat-img {
+    height: 238px;
+  }
+}
+
+.cat-container:hover {
+  .text-overlay {
+    opacity: 1;
+  }
+  .cat-img {
+    filter: blur(3px) grayscale(50%);
+  }
+}

@@ -1,0 +1,7 @@
+.logo-comp {
+  transition: all 0.25s;
+}
+
+.logo-comp:hover {
+  opacity: 85%;
+}
