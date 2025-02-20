@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PrimaryTitle = styled.h1`
   font-family: "Bungee Shade", cursive;
-  font-size: ${(props) => props.size};
+  font-size: ${(props: any) => props.size};
   font-weight: 600;
   color: var(--wheat);
   line-height: 1.25;
@@ -12,7 +12,7 @@ export const PrimaryTitle = styled.h1`
 
 export const SecondaryTitle = styled.h2`
   font-family: "Bungee", cursive;
-  font-size: ${(props) => props.size};
+  font-size: ${(props: any) => props.size};
   font-weight: 600;
   color: var(--red);
   line-height: 1.25;

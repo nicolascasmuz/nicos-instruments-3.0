@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const StraightButton = styled.button`
+interface ButtonProps {
+  color?: string;
+  width?: string;
+  secondWidth?: string;
+}
+
+export const StraightButton = styled.button<ButtonProps>`
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   color: var(--wheat);
@@ -20,7 +26,7 @@ export const StraightButton = styled.button`
   }
 `;
 
-export const RoundedButton = styled.button`
+export const RoundedButton = styled.button<ButtonProps>`
   font-family: "Bebas Neue", cursive;
   font-size: 15px;
   color: var(--wheat);

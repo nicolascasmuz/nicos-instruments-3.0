@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Select = styled.select`
+interface SelectProps {
+  width?: string;
+}
+
+export const Select = styled.select<SelectProps>`
   align-self: center;
   background-color: var(--black);
   border: none;
