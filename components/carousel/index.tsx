@@ -32,7 +32,6 @@ const CarouselComp = () => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
-  // Función para mover al siguiente slide
   const nextSlide = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
@@ -40,9 +39,8 @@ const CarouselComp = () => {
   useEffect(() => {
     if (!emblaApi) return;
 
-    const interval = setInterval(nextSlide, 3000); // Cambia cada 3 segundos
+    const interval = setInterval(nextSlide, 3000);
 
-    // Pausar al interactuar manualmente
     emblaApi.on("pointerDown", () => clearInterval(interval));
     emblaApi.on("pointerUp", () => {
       setTimeout(() => {
@@ -98,12 +96,14 @@ const CarouselComp = () => {
               onPrevButtonClick();
             }}
             disabled={prevBtnDisabled}
+            className={styles["carousel__arrow"]}
           />
           <RightArrowIcon
             onClick={() => {
               onNextButtonClick();
             }}
             disabled={nextBtnDisabled}
+            className={styles["carousel__arrow"]}
           />
         </div>
       </div>

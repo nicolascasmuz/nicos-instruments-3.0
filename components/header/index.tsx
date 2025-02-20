@@ -102,6 +102,13 @@ export function Header() {
           >
             Mi perfil
           </a>
+          <a
+            className={styles["header__option"]}
+            href="/purchases"
+            style={{ display: profilePicDisplay }}
+          >
+            Mis compras
+          </a>
           <a className={styles["header__option"]} href="/about-us">
             Quienes somos
           </a>

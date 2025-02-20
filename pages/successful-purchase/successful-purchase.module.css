@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #362b2f;
+  background-color: var(--purple);
   min-height: calc(100vh - 260px);
   overflow: auto;
   padding: 40px 60px;

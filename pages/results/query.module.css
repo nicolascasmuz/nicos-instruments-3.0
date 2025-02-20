@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #362b2f;
+  background-color: var(--purple);
   min-height: calc(100vh - 260px);
   overflow: auto;
   padding: 40px 0;
@@ -44,23 +44,23 @@
 .results__h2 {
   font-family: "Bungee Shade", cursive;
   font-size: 25px;
-  color: #f0efda;
+  color: var(--wheat);
 }
 
 .h2__loading {
   font-family: "Bungee Shade", cursive;
   font-size: 25px;
-  color: #f0efda;
+  color: var(--wheat);
   margin: 0 0 0 70px;
 }
 
 .results__select {
   font-family: "Bebas Neue", cursive;
   font-size: 18px;
-  color: #080808;
+  color: var(--black);
   width: 120px;
   height: 30px;
-  background-color: #f0efda;
+  background-color: var(--wheat);
   border: none;
   border-radius: 5px;
 }

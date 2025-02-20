@@ -34,27 +34,9 @@
   }
 }
 
-.category__top-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 50px;
-}
-
-.category__h2 {
+.h2__category {
   font-family: "Bungee Shade", cursive;
   font-size: 25px;
   color: var(--wheat);
-  line-height: 1.25;
-}
-
-.category__select {
-  align-self: center;
-  background-color: var(--black);
-  border: none;
-  font-family: "Bebas Neue", cursive;
-  font-size: 25px;
-  color: var(--white);
-  width: 50%;
-  height: 45px;
+  margin: 0 0 0 70px;
 }

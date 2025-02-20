@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StraightButton = styled.button`
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
-  color: #f0efda;
+  color: var(--wheat);
   text-align: center;
   border: none;
   background-color: ${(props) => props.color};
@@ -23,7 +23,7 @@ export const StraightButton = styled.button`
 export const RoundedButton = styled.button`
   font-family: "Bebas Neue", cursive;
   font-size: 15px;
-  color: #f0efda;
+  color: var(--wheat);
   text-align: center;
   border: none;
   border-radius: 5px;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import Image from "next/image";
 import styles from "./about-us.module.css";
-import musicShopOutside from "../../resources/music-shop-outside.jpg";
+import musicShopOutside from "resources/music-shop-outside_02.jpg";
 import Layout from "components/layout";
 import { Body, PrimaryTitle, Subtitle } from "ui/texts";
 
