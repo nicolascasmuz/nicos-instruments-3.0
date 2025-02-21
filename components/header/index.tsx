@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Logo } from "../logo";
 import { useMe } from "lib/hooks";
 import searchLoupe from "resources/loupe.png";
@@ -36,6 +36,13 @@ export function Header() {
       router.push("/results/" + queryValue);
     }
   };
+
+  async function HandleClick(e) {
+    e.preventDefault();
+    localStorage.removeItem("saved-state");
+
+    router.refresh();
+  }
 
   return (
     <div className={styles["header"]}>
@@ -85,9 +92,6 @@ export function Header() {
       </label>
       <ul className={styles["header__menu-lista"]}>
         <li>
-          <a className={styles["header__option"]} href="/">
-            Inicio
-          </a>
           <a
             className={styles["header__option"]}
             href="/login"
@@ -117,6 +121,14 @@ export function Header() {
           </a>
           <a className={styles["header__option"]} href="/contact">
             Contacto
+          </a>
+          <a
+            onClick={HandleClick}
+            className={styles["header__option"]}
+            href="/"
+            style={{ display: profilePicDisplay }}
+          >
+            Cerrar sesión
           </a>
         </li>
       </ul>
