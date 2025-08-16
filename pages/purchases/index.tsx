@@ -62,7 +62,7 @@ export default function Purchases() {
             style={{ display: display ? "none" : "grid" }}
             className={styles["modify-data-form"]}
           >
-            {pendingProducts.length ? (
+            {pendingProducts ? (
               pendingProducts.map((r, index) => (
                 <PendingCard
                   key={index}
@@ -80,7 +80,7 @@ export default function Purchases() {
             style={{ display: display ? "grid" : "none" }}
             className={styles["modify-data-form"]}
           >
-            {approvedProducts.length ? (
+            {approvedProducts ? (
               approvedProducts.map((r, index) => (
                 <ApprovedCard
                   key={index}
